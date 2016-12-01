@@ -19,6 +19,14 @@
         <File name="risk_factor" src="lib/infermedica_api/models/risk_factor.py" />
         <File name="symptom" src="lib/infermedica_api/models/symptom.py" />
         <File name="webservice" src="lib/infermedica_api/webservice.py" />
+        <File name="" src=".gitignore" />
+        <File name="README" src="README.md" />
+        <File name="censor" src="html/censor.html" />
+        <File name="censor_style" src="html/css/censor_style.css" />
+        <File name="styles" src="html/css/styles.css" />
+        <File name="index" src="html/index.html" />
+        <File name="index" src="html/js/index.js" />
+        <File name="qi" src="html/js/qi.js" />
     </Resources>
     <Topics />
     <IgnoredPaths>
