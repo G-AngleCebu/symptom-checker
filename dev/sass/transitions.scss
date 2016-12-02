@@ -1,0 +1,136 @@
+$anim-speed: .5s;
+$offset: 50%;
+
+//-----------
+// Fade up
+//-----------
+
+.element--fadeup {
+  animation-name: FADEUP;
+  animation-duration: $anim-speed;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+
+  -webkit-animation-name: FADEUP;
+  -webkit-animation-duration: $anim-speed;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+}
+
+@-webkit-keyframes FADEUP {
+  from { transform: translateY($offset); }
+  to   { transform: translateY(0); }
+}
+@-moz-keyframes FADEUP {
+  from { transform: translateY($offset); }
+  to   { transform: translateY(0); }
+}
+@-o-keyframes FADEUP {
+  from { transform: translateY($offset); }
+  to   { transform: translateY(0); }
+}
+@keyframes FADEUP {
+  from { transform: translateY($offset); }
+  to   { transform: translateY(0); }
+}
+
+//-----------
+// Fade down
+//-----------
+
+.element--fadedown {
+  animation-name: FADEDOWN;
+  animation-duration: $anim-speed;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+
+  -webkit-animation-name: FADEDOWN;
+  -webkit-animation-duration: $anim-speed;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+}
+
+@-webkit-keyframes FADEDOWN {
+  from { transform: translateY(-$offset); }
+  to   { transform: translateY(0); }
+}
+@-moz-keyframes FADEDOWN {
+  from { transform: translateY(-$offset); }
+  to   { transform: translateY(0); }
+}
+@-o-keyframes FADEDOWN {
+  from { transform: translateY(-$offset); }
+  to   { transform: translateY(0); }
+}
+@keyframes FADEDOWN {
+  from { transform: translateY(-$offset); }
+  to   { transform: translateY(0); }
+}
+
+//-----------
+// Fade left
+//-----------
+
+.element--fadeleft {
+  animation-name: FADELEFT;
+  animation-duration: $anim-speed;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+
+  -webkit-animation-name: FADELEFT;
+  -webkit-animation-duration: $anim-speed;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+
+}
+
+@-webkit-keyframes FADELEFT {
+  from { transform: translateX(-$offset); }
+  to   { transform: translateX(0); }
+}
+@-moz-keyframes FADELEFT {
+  from { transform: translateX(-$offset); }
+  to   { transform: translateX(0); }
+}
+@-o-keyframes FADELEFT {
+  from { transform: translateX(-$offset); }
+  to   { transform: translateX(0); }
+}
+@keyframes FADELEFT {
+  from { transform: translateX(-$offset); }
+  to   { transform: translateX(0); }
+}
+
+//-----------
+// Fade right
+//-----------
+
+.element--faderight {
+  animation-name: FADERIGHT;
+  animation-duration: $anim-speed;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+
+  -webkit-animation-name: FADERIGHT;
+  -webkit-animation-duration: $anim-speed;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+
+}
+
+@-webkit-keyframes FADERIGHT {
+  from { transform: translateX($offset); }
+  to   { transform: translateX(0); }
+}
+@-moz-keyframes FADERIGHT {
+  from { transform: translateX($offset); }
+  to   { transform: translateX(0); }
+}
+@-o-keyframes FADERIGHT {
+  from { transform: translateX($offset); }
+  to   { transform: translateX(0); }
+}
+@keyframes FADERIGHT {
+  from { transform: translateX($offset); }
+  to   { transform: translateX(0); }
+}

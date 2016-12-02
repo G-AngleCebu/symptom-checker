@@ -1,3 +1,150 @@
+.element--fadeup {
+  animation-name: FADEUP;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  -webkit-animation-name: FADEUP;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal; }
 
+@-webkit-keyframes FADEUP {
+  from {
+    transform: translateY(50%); }
+  to {
+    transform: translateY(0); } }
+@-moz-keyframes FADEUP {
+  from {
+    transform: translateY(50%); }
+  to {
+    transform: translateY(0); } }
+@-o-keyframes FADEUP {
+  from {
+    transform: translateY(50%); }
+  to {
+    transform: translateY(0); } }
+@keyframes FADEUP {
+  from {
+    transform: translateY(50%); }
+  to {
+    transform: translateY(0); } }
+.element--fadedown {
+  animation-name: FADEDOWN;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  -webkit-animation-name: FADEDOWN;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal; }
+
+@-webkit-keyframes FADEDOWN {
+  from {
+    transform: translateY(-50%); }
+  to {
+    transform: translateY(0); } }
+@-moz-keyframes FADEDOWN {
+  from {
+    transform: translateY(-50%); }
+  to {
+    transform: translateY(0); } }
+@-o-keyframes FADEDOWN {
+  from {
+    transform: translateY(-50%); }
+  to {
+    transform: translateY(0); } }
+@keyframes FADEDOWN {
+  from {
+    transform: translateY(-50%); }
+  to {
+    transform: translateY(0); } }
+.element--fadeleft {
+  animation-name: FADELEFT;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  -webkit-animation-name: FADELEFT;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal; }
+
+@-webkit-keyframes FADELEFT {
+  from {
+    transform: translateX(-50%); }
+  to {
+    transform: translateX(0); } }
+@-moz-keyframes FADELEFT {
+  from {
+    transform: translateX(-50%); }
+  to {
+    transform: translateX(0); } }
+@-o-keyframes FADELEFT {
+  from {
+    transform: translateX(-50%); }
+  to {
+    transform: translateX(0); } }
+@keyframes FADELEFT {
+  from {
+    transform: translateX(-50%); }
+  to {
+    transform: translateX(0); } }
+.element--faderight {
+  animation-name: FADERIGHT;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  -webkit-animation-name: FADERIGHT;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal; }
+
+@-webkit-keyframes FADERIGHT {
+  from {
+    transform: translateX(50%); }
+  to {
+    transform: translateX(0); } }
+@-moz-keyframes FADERIGHT {
+  from {
+    transform: translateX(50%); }
+  to {
+    transform: translateX(0); } }
+@-o-keyframes FADERIGHT {
+  from {
+    transform: translateX(50%); }
+  to {
+    transform: translateX(0); } }
+@keyframes FADERIGHT {
+  from {
+    transform: translateX(50%); }
+  to {
+    transform: translateX(0); } }
+body {
+  padding: 0;
+  margin: 0;
+  width: 1707px;
+  height: 1067px;
+  position: relative; }
+
+.section-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden; }
+
+.card {
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  left: calc(50% - (90% / 2));
+  top: calc(50% - (90% / 2));
+  background-color: tomato; }
+
+.card1 {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  left: calc(50% - (50% / 2));
+  top: calc(50% - (50% / 2));
+  background-color: olive; }
 
 /*# sourceMappingURL=styles.css.map */
