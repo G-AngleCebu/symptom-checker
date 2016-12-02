@@ -1,14 +1,15 @@
 /*
- *
- * Pepper related functionalities only !!!
- *
- */
+*
+* Pepper related functionalities only !!!
+*
+*/
+var diagnosisPage = require('./diagnosisPage.js');
 
 var session = new QiSession();
 var MEMORY_PREFIX = "SymptomChecker/";
 
 // Init functions
-function initSubscribe(){
+exports.initSubscribe = function(){
 	var subscribeFunctions = [
 		{
 			"eventName": "receiveDiagnosisResult",
@@ -27,7 +28,7 @@ function initSubscribe(){
 }
 
 // Utility functions
-function raiseEvent(eventName, value) {
+exports.raiseEvent = function(eventName, value) {
 	session.service("ALMemory").done(function (ALMemory) {
 		ALMemory.raiseEvent(MEMORY_PREFIX + eventName, value);
 	});

@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack --watch & scss --watch sass/index.scss:../choregraphe/html/styles.css",
+    "build": "NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.1.1",
     "webpack": "^1.13.3"
   }
 }

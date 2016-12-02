@@ -22,12 +22,11 @@
         <File name="" src=".gitignore" />
         <File name="README" src="README.md" />
         <File name="censor" src="html/censor.html" />
-        <File name="censor_style" src="html/css/censor_style.css" />
-        <File name="styles" src="html/css/styles.css" />
         <File name="index" src="html/index.html" />
-        <File name="index" src="html/js/index.js" />
-        <File name="qi" src="html/js/qi.js" />
-        <File name="diagnosisPage" src="html/js/diagnosisPage.js" />
+        <File name="bundle.min" src="html/js/bundle.min.js" />
+        <File name="" src="html/js/.DS_Store" />
+        <File name="styles" src="html/styles.css" />
+        <File name="styles.css" src="html/styles.css.map" />
     </Resources>
     <Topics />
     <IgnoredPaths>

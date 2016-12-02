@@ -1,0 +1,165 @@
+{
+  "case_id": null,
+  "conditions": [
+    {
+      "id": "c_10",
+      "name": "Gastroenteritis",
+      "probability": 0.0275
+    },
+    {
+      "id": "c_659",
+      "name": "Acute viral tonsillopharyngitis",
+      "probability": 0.0238
+    },
+    {
+      "id": "c_55",
+      "name": "Tension-type headaches",
+      "probability": 0.0208
+    },
+    {
+      "id": "c_49",
+      "name": "Migraine",
+      "probability": 0.0207
+    },
+    {
+      "id": "c_192",
+      "name": "Mumps (epidemic parotitis)",
+      "probability": 0.02
+    },
+    {
+      "id": "c_121",
+      "name": "Acute pharyngitis",
+      "probability": 0.019
+    },
+    {
+      "id": "c_138",
+      "name": "Food poisoning",
+      "probability": 0.019
+    },
+    {
+      "id": "c_249",
+      "name": "Acute tonsillitis",
+      "probability": 0.0183
+    },
+    {
+      "id": "c_50",
+      "name": "Hypertension",
+      "probability": 0.0182
+    },
+    {
+      "id": "c_33",
+      "name": "Influenza",
+      "probability": 0.0178
+    },
+    {
+      "id": "c_9",
+      "name": "Sleep apnea",
+      "probability": 0.0174
+    },
+    {
+      "id": "c_284",
+      "name": "Pyelonephritis",
+      "probability": 0.013
+    },
+    {
+      "id": "c_72",
+      "name": "Acute bronchitis",
+      "probability": 0.0112
+    },
+    {
+      "id": "c_132",
+      "name": "Appendicitis",
+      "probability": 0.0109
+    },
+    {
+      "id": "c_215",
+      "name": "Cholecystitis",
+      "probability": 0.0109
+    },
+    {
+      "id": "c_186",
+      "name": "Diverticulitis",
+      "probability": 0.0109
+    },
+    {
+      "id": "c_477",
+      "name": "Hepatitis A",
+      "probability": 0.0106
+    },
+    {
+      "id": "c_683",
+      "name": "Chronic migraine",
+      "probability": 0.0104
+    },
+    {
+      "id": "c_123",
+      "name": "Laryngitis",
+      "probability": 0.0096
+    }
+  ],
+  "evaluation_time": null,
+  "extras": {},
+  "extras_permanent": {},
+  "lab_tests": [],
+  "patient_age": 35,
+  "patient_sex": "male",
+  "pursued": [],
+  "question": {
+    "extras": {},
+    "items": [
+      {
+        "choices": [
+          {
+            "id": "present",
+            "label": "Yes"
+          },
+          {
+            "id": "absent",
+            "label": "No"
+          },
+          {
+            "id": "unknown",
+            "label": "Don't know"
+          }
+        ],
+        "id": "s_100",
+        "name": "Above 101 °F (38 °C)"
+      },
+      {
+        "choices": [
+          {
+            "id": "present",
+            "label": "Yes"
+          },
+          {
+            "id": "absent",
+            "label": "No"
+          },
+          {
+            "id": "unknown",
+            "label": "Don't know"
+          }
+        ],
+        "id": "s_99",
+        "name": "Between 99.5 and 101 °F (37 and 38 °C)"
+      }
+    ],
+    "text": "What is your body temperature?",
+    "type": "group_single"
+  },
+  "risk_factors": [],
+  "symptoms": [
+    {
+      "choice_id": "present",
+      "id": "s_21"
+    },
+    {
+      "choice_id": "present",
+      "id": "s_98"
+    },
+    {
+      "choice_id": "absent",
+      "id": "s_107"
+    }
+  ]
+}

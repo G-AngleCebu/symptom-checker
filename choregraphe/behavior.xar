@@ -22,21 +22,13 @@
                             <bitmap>media/images/box/box-python-script.png</bitmap>
                             <script language="4">
                                 <content>
-                                    <![CDATA[class MyClass(GeneratedClass):
+                                    <![CDATA[import sys
+
+class MyClass(GeneratedClass):
     def __init__(self):
-        GeneratedClass.__init__(self)
-
-    def onLoad(self):
-        #put initialization code here
-        pass
-
-    def onUnload(self):
-        #put clean-up code here
-        pass
-
-    def onInput_onStart(self):
         reload(sys)
         sys.setdefaultencoding('utf8')
+        GeneratedClass.__init__(self)
 
         behavior_id = self.behaviorId;
         folderName = os.path.normpath(ALProxy("ALFrameManager").getBehaviorPath(behavior_id)) + "/lib"
@@ -46,11 +38,17 @@
         for moduleName in os.listdir(folderName):
             if moduleName in sys.modules:
                 reload(sys.modules[moduleName])
+
         reload(sys)
 
+    def onLoad(self):
+        pass
 
-        import infermedica_api
+    def onUnload(self):
+        #put clean-up code here
+        pass
 
+    def onInput_onStart(self):
         self.onStopped() #activate the output of the box
         pass
 
@@ -64,7 +62,7 @@
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
                         </Box>
-                        <Box name="Infermedica (1)" id="2" localization="8" tooltip="" x="402" y="42">
+                        <Box name="Get diagnosis" id="2" localization="8" tooltip="" x="402" y="42">
                             <bitmap>media/images/box/box-python-script.png</bitmap>
                             <script language="4">
                                 <content>
@@ -78,7 +76,6 @@ class MyClass(GeneratedClass):
         GeneratedClass.__init__(self)
 
     def onLoad(self):
-        self.api = infermedica_api.API(app_id='387887c7', app_key='170ff97b4fada9443874b2558113b559')
         #put initialization code here
         pass
 
@@ -86,7 +83,8 @@ class MyClass(GeneratedClass):
         #put clean-up code here
         pass
 
-    def onInput_onStart(self):
+    def onInput_onStart(self, p):
+        self.api = infermedica_api.API(app_id='387887c7', app_key='170ff97b4fada9443874b2558113b559')
         request = infermedica_api.Diagnosis(sex='male', age=35)
         request.add_symptom('s_21', 'present')
         request.add_symptom('s_98', 'present')
@@ -269,8 +267,6 @@ class MyClass(GeneratedClass):
                         </Box>
                         <Link inputowner="4" indexofinput="2" outputowner="1" indexofoutput="4" />
                         <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="2" />
-                        <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="4" />
-                        <Link inputowner="5" indexofinput="2" outputowner="0" indexofoutput="5" />
                         <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="4" />
                     </Diagram>
                 </BehaviorKeyframe>
