@@ -10,9 +10,9 @@
         <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
         <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
         <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
-        <Input name="tabletPepper/ToPepper" type="0" type_size="1" nature="4" stm_value_name="tabletPepper/ToPepper" inner="1" tooltip="tabletPepper/ToPepper desc" id="4" />
-        <Input name="SymptomChecker/test" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/test" inner="1" tooltip="SymptomChecker/test desc" id="5" />
-        <Input name="BackBumperPressed" type="0" type_size="1" nature="4" stm_value_name="BackBumperPressed" inner="1" tooltip="BackBumperPressed desc" id="6" />
+        <Input name="SymptomChecker/test" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/test" inner="1" tooltip="SymptomChecker/test desc" id="4" />
+        <Input name="SymptomChecker/addSymptoms" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/addSymptoms" inner="1" tooltip="SymptomChecker/addSymptoms desc" id="5" />
+        <Input name="SymptomChecker/receiveDiagnosisResult" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/receiveDiagnosisResult" inner="1" tooltip="SymptomChecker/receiveDiagnosisResult desc" id="6" />
         <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="7" />
         <Timeline enable="0">
             <BehaviorLayer name="behavior_layer1">
@@ -48,6 +48,9 @@
                 reload(sys.modules[moduleName])
         reload(sys)
 
+
+        import infermedica_api
+
         self.onStopped() #activate the output of the box
         pass
 
@@ -61,7 +64,7 @@
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
                         </Box>
-                        <Box name="Infermedica (1)" id="2" localization="8" tooltip="" x="266" y="61">
+                        <Box name="Infermedica (1)" id="2" localization="8" tooltip="" x="402" y="42">
                             <bitmap>media/images/box/box-python-script.png</bitmap>
                             <script language="4">
                                 <content>
@@ -90,8 +93,6 @@ class MyClass(GeneratedClass):
         request.add_symptom('s_107', 'absent')
         request = self.api.diagnosis(request)
 
-        self.logger.info(request.question)
-#        self.onStopped(request.question)
         self.onStopped(str(request))
         pass
 
@@ -105,7 +106,7 @@ class MyClass(GeneratedClass):
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
                         </Box>
-                        <Box name="test" id="3" localization="8" tooltip="" x="437" y="53">
+                        <Box name="test" id="3" localization="8" tooltip="" x="801" y="35">
                             <bitmap>media/images/box/box-python-script.png</bitmap>
                             <script language="4">
                                 <content>
@@ -139,7 +140,7 @@ class MyClass(GeneratedClass):
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
                         </Box>
-                        <Box name="Show App" id="4" localization="8" tooltip="Loads the application on the tablet, if it exists, and displays the webview.&#x0A;&#x0A;V1.0.0&#x0A;" x="260" y="189">
+                        <Box name="Show App" id="4" localization="8" tooltip="Loads the application on the tablet, if it exists, and displays the webview.&#x0A;&#x0A;V1.0.0&#x0A;" x="252" y="91">
                             <bitmap>media/images/box/root.png</bitmap>
                             <script language="4">
                                 <content>
@@ -199,10 +200,78 @@ class MyClass(GeneratedClass):
                             <Output name="onSuccess" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished successfully." id="3" />
                             <Output name="onFailure" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished unsuccessfully." id="4" />
                         </Box>
-                        <Link inputowner="3" indexofinput="2" outputowner="2" indexofoutput="4" />
-                        <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="4" />
+                        <Box name="Receive Symptoms" id="5" localization="8" tooltip="" x="197" y="295">
+                            <bitmap>media/images/box/box-python-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[import json
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_onStart(self, p):
+        jsonSymptoms = json.loads(p)
+
+        for symptom in jsonSymptoms:
+            self.logger.info(str(symptom["test"]))
+        #self.onStopped() #activate the output of the box
+        pass
+
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onStopped() #activate the output of the box]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="0" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+                        </Box>
+                        <Box name="receive diagnosis" id="6" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="556" y="48">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        pass
+
+    def onLoad(self):
+        self.memory = ALProxy("ALMemory")
+
+    def onUnload(self):
+        self.memory = None
+
+    def onInput_onStart(self, p):
+        self.memory.raiseEvent(self.getParameter("key"), p)
+        self.onStopped(p)
+
+    def onInput_onStop(self):
+        self.onUnload() #~ it is recommended to call onUnload of this box in a onStop method, as the code written in onUnload is used to stop the box as well
+        pass]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="0" type_size="1" nature="2" inner="0" tooltip="Receives the value to be inserted as an event in ALMemory." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished. It contains the inserted value in ALMemory." id="4" />
+                            <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
+                            <Parameter name="key" inherits_from_parent="0" content_type="3" value="SymptomChecker/receiveDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
+                        </Box>
                         <Link inputowner="4" indexofinput="2" outputowner="1" indexofoutput="4" />
                         <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="2" />
+                        <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="4" />
+                        <Link inputowner="5" indexofinput="2" outputowner="0" indexofoutput="5" />
+                        <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="4" />
                     </Diagram>
                 </BehaviorKeyframe>
             </BehaviorLayer>

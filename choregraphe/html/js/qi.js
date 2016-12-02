@@ -11,8 +11,8 @@ var MEMORY_PREFIX = "SymptomChecker/";
 function initSubscribe(){
 	var subscribeFunctions = [
 		{
-			"eventName": "test",
-			"function": homePage.showHomePage
+			"eventName": "receiveDiagnosisResult",
+			"function": diagnosisPage.receiveDiagnosisResult
 		}
 	];
 
@@ -20,7 +20,7 @@ function initSubscribe(){
 		// loop all subscribe-function pairs
 		subscribeFunctions.forEach(function(elem){
 			ALMemory.subscriber(MEMORY_PREFIX + elem.eventName).done(function(subscriber) {
-				subscriber.signal.connect(homePage.showHomePage);
+				subscriber.signal.connect(elem.function);
 			});
 		});
 	});

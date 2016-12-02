@@ -27,6 +27,7 @@
         <File name="index" src="html/index.html" />
         <File name="index" src="html/js/index.js" />
         <File name="qi" src="html/js/qi.js" />
+        <File name="diagnosisPage" src="html/js/diagnosisPage.js" />
     </Resources>
     <Topics />
     <IgnoredPaths>
