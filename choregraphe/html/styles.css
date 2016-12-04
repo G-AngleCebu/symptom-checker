@@ -1,12 +1,14 @@
 .element--fadeup {
   animation-name: FADEUP;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
   -webkit-animation-name: FADEUP;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.7s;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation-direction: normal; }
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out; }
 
 @-webkit-keyframes FADEUP {
   from {
@@ -30,13 +32,15 @@
     transform: translateY(0); } }
 .element--fadedown {
   animation-name: FADEDOWN;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
   -webkit-animation-name: FADEDOWN;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.7s;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation-direction: normal; }
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out; }
 
 @-webkit-keyframes FADEDOWN {
   from {
@@ -60,13 +64,15 @@
     transform: translateY(0); } }
 .element--fadeleft {
   animation-name: FADELEFT;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
   -webkit-animation-name: FADELEFT;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.7s;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation-direction: normal; }
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out; }
 
 @-webkit-keyframes FADELEFT {
   from {
@@ -90,13 +96,15 @@
     transform: translateX(0); } }
 .element--faderight {
   animation-name: FADERIGHT;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
   -webkit-animation-name: FADERIGHT;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.7s;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation-direction: normal; }
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out; }
 
 @-webkit-keyframes FADERIGHT {
   from {

@@ -1,4 +1,4 @@
-$anim-speed: .5s;
+$anim-speed: .7s;
 $offset: 50%;
 
 //-----------
@@ -10,11 +10,13 @@ $offset: 50%;
   animation-duration: $anim-speed;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
 
   -webkit-animation-name: FADEUP;
   -webkit-animation-duration: $anim-speed;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out;
 }
 
 @-webkit-keyframes FADEUP {
@@ -43,11 +45,13 @@ $offset: 50%;
   animation-duration: $anim-speed;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
 
   -webkit-animation-name: FADEDOWN;
   -webkit-animation-duration: $anim-speed;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out;
 }
 
 @-webkit-keyframes FADEDOWN {
@@ -76,11 +80,13 @@ $offset: 50%;
   animation-duration: $anim-speed;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
 
   -webkit-animation-name: FADELEFT;
   -webkit-animation-duration: $anim-speed;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out;
 
 }
 
@@ -110,11 +116,13 @@ $offset: 50%;
   animation-duration: $anim-speed;
   animation-fill-mode: forwards;
   animation-direction: normal;
+  animation-timing-function: ease-in-out;
 
   -webkit-animation-name: FADERIGHT;
   -webkit-animation-duration: $anim-speed;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out;
 
 }
 
