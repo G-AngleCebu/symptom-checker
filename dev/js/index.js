@@ -1,7 +1,10 @@
 var $ = require('jquery');
-var qi = require('./qi.js');
+// var qi = require('./qi.js');
+var pages = require('./pageController.js');
+require('./background.js');
 
 // init
 (function(){
-	qi.initSubscribe();
+	// qi.initSubscribe();
+	// pages.goToPage("#search-symptoms-form");
 })();

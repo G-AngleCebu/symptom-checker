@@ -1,4 +1,5 @@
 @import "transitions";
+@import "background";
 
 body{
   padding: 0;
@@ -13,6 +14,11 @@ body{
   height: 100%;
   position: relative;
   overflow: hidden;
+  display: none;
+
+  &.section--active{
+    display: block;
+  }
 }
 
 .card{

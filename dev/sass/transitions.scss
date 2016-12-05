@@ -20,20 +20,28 @@ $offset: 50%;
 }
 
 @-webkit-keyframes FADEUP {
-  from { transform: translateY($offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY($offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 @-moz-keyframes FADEUP {
-  from { transform: translateY($offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY($offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 @-o-keyframes FADEUP {
-  from { transform: translateY($offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY($offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 @keyframes FADEUP {
-  from { transform: translateY($offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY($offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 
 //-----------
@@ -55,20 +63,28 @@ $offset: 50%;
 }
 
 @-webkit-keyframes FADEDOWN {
-  from { transform: translateY(-$offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY(-$offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 @-moz-keyframes FADEDOWN {
-  from { transform: translateY(-$offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY(-$offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 @-o-keyframes FADEDOWN {
-  from { transform: translateY(-$offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY(-$offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 @keyframes FADEDOWN {
-  from { transform: translateY(-$offset); }
-  to   { transform: translateY(0); }
+  from { transform: translateY(-$offset);
+         opacity: 0;}
+  to   { transform: translateY(0);
+         opacity: 1;}
 }
 
 //-----------
@@ -91,20 +107,28 @@ $offset: 50%;
 }
 
 @-webkit-keyframes FADELEFT {
-  from { transform: translateX(-$offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX(-$offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 @-moz-keyframes FADELEFT {
-  from { transform: translateX(-$offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX(-$offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 @-o-keyframes FADELEFT {
-  from { transform: translateX(-$offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX(-$offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 @keyframes FADELEFT {
-  from { transform: translateX(-$offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX(-$offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 
 //-----------
@@ -127,18 +151,26 @@ $offset: 50%;
 }
 
 @-webkit-keyframes FADERIGHT {
-  from { transform: translateX($offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX($offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 @-moz-keyframes FADERIGHT {
-  from { transform: translateX($offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX($offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 @-o-keyframes FADERIGHT {
-  from { transform: translateX($offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX($offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
 @keyframes FADERIGHT {
-  from { transform: translateX($offset); }
-  to   { transform: translateX(0); }
+  from { transform: translateX($offset);
+         opacity: 0;}
+  to   { transform: translateX(0);
+         opacity: 1;}
 }
