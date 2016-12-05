@@ -13,9 +13,11 @@ body{
 }
 
 #title{
-  font-size: 150px;
-  font-family: $bold-font;
-  letter-spacing: 10px;
+  color: #222;
+  font-size: 280px;
+  font-family: $extra-bold-font;
+  letter-spacing: -10px;
+  line-height: 230px;
 }
 
 .section-wrapper{

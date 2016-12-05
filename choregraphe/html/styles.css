@@ -192,9 +192,11 @@ body {
   font-family: "OpenSans-Regular"; }
 
 #title {
-  font-size: 150px;
-  font-family: "OpenSans-Bold";
-  letter-spacing: 10px; }
+  color: #222;
+  font-size: 280px;
+  font-family: "OpenSans-Extra-Bold";
+  letter-spacing: -10px;
+  line-height: 230px; }
 
 .section-wrapper {
   width: 100%;
