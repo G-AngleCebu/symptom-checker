@@ -6,5 +6,5 @@ require('./background.js');
 // init
 (function(){
 	// qi.initSubscribe();
-	pages.goToPage("#detail-form");
+	pages.goToPage("#app-title");
 })();

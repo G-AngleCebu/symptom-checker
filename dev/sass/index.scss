@@ -1,3 +1,4 @@
+@import "variables";
 @import "transitions";
 @import "background";
 
@@ -7,6 +8,14 @@ body{
   width: 1707px;
   height: 1067px;
   position: relative;
+  color: #222;
+  font-family: $default-font;
+}
+
+#title{
+  font-size: 150px;
+  font-family: $bold-font;
+  letter-spacing: 10px;
 }
 
 .section-wrapper{
