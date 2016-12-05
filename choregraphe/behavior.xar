@@ -66,7 +66,8 @@ class MyClass(GeneratedClass):
                             <bitmap>media/images/box/box-python-script.png</bitmap>
                             <script language="4">
                                 <content>
-                                    <![CDATA[import json
+                                    <![CDATA[import requests
+import json
 import infermedica_api
 
 class MyClass(GeneratedClass):
@@ -89,6 +90,7 @@ class MyClass(GeneratedClass):
         request.add_symptom('s_21', 'present')
         request.add_symptom('s_98', 'present')
         request.add_symptom('s_107', 'absent')
+        self.logger.info("Getting diagnosis...")
         request = self.api.diagnosis(request)
 
         self.onStopped(str(request))
