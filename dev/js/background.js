@@ -27,13 +27,13 @@
   // Some variables for later use
   var particleCount = 150,
   	particles = [],
-  	minDist = 70,
+  	minDist = 150,
   	dist;
 
   // Function to paint the canvas black
   function paintCanvas() {
   	// Set the fill color to black
-  	ctx.fillStyle = "rgba(0,0,0,1)";
+  	ctx.fillStyle = "rgba(58,123,213,1)";
 
   	// This will create a rectangle of white color from the
   	// top left (0,0) to the bottom right corner (W,H)
@@ -67,7 +67,7 @@
 
   	// Now the radius of the particles. I want all of
   	// them to be equal in size so no Math.random() here..
-  	this.radius = 4;
+  	this.radius = 2;
 
   	// This is the method that will draw the Particle on the
   	// canvas. It is using the basic fillStyle, then we start
@@ -183,11 +183,11 @@
   			ay = dy/2000;
 
   		// Apply the acceleration on the particles
-  		p1.vx -= ax;
-  		p1.vy -= ay;
-
-  		p2.vx += ax;
-  		p2.vy += ay;
+  		// p1.vx -= ax;
+  		// p1.vy -= ay;
+      //
+  		// p2.vx += ax;
+  		// p2.vy += ay;
   	}
   }
 
