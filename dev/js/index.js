@@ -6,5 +6,5 @@ require('./background.js');
 // init
 (function(){
 	// qi.initSubscribe();
-	// pages.goToPage("#search-symptoms-form");
+	pages.goToPage("#detail-form");
 })();
