@@ -1,5 +1,4 @@
 (function() {
-  // RequestAnimFrame: a browser API for getting smooth animations
   window.requestAnimFrame = (function(){
     return  window.requestAnimationFrame       ||
   		  window.webkitRequestAnimationFrame ||
@@ -80,7 +79,7 @@
   	// whether the arc is to be drawn in counter clockwise or
   	// in a clockwise direction. False for clockwise.
   	this.draw = function() {
-  		ctx.fillStyle = "gray";
+  		ctx.fillStyle = "silver";
   		ctx.beginPath();
   		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
 
@@ -171,7 +170,7 @@
 
   		// Draw the line
   		ctx.beginPath();
-  		ctx.strokeStyle = "rgba(128,128,128,"+ (1.2-dist/minDist) +")";
+  		ctx.strokeStyle = "rgba(200,200,200,"+ (1.2-dist/minDist) +")";
   		ctx.moveTo(p1.x, p1.y);
   		ctx.lineTo(p2.x, p2.y);
   		ctx.stroke();
