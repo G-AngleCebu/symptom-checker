@@ -33,7 +33,7 @@
   // Function to paint the canvas black
   function paintCanvas() {
   	// Set the fill color to black
-  	ctx.fillStyle = "rgba(58,123,213,1)";
+  	ctx.fillStyle = "rgba(255,255,255,1)";
 
   	// This will create a rectangle of white color from the
   	// top left (0,0) to the bottom right corner (W,H)
@@ -80,7 +80,7 @@
   	// whether the arc is to be drawn in counter clockwise or
   	// in a clockwise direction. False for clockwise.
   	this.draw = function() {
-  		ctx.fillStyle = "white";
+  		ctx.fillStyle = "gray";
   		ctx.beginPath();
   		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
 
@@ -171,7 +171,7 @@
 
   		// Draw the line
   		ctx.beginPath();
-  		ctx.strokeStyle = "rgba(255,255,255,"+ (1.2-dist/minDist) +")";
+  		ctx.strokeStyle = "rgba(128,128,128,"+ (1.2-dist/minDist) +")";
   		ctx.moveTo(p1.x, p1.y);
   		ctx.lineTo(p2.x, p2.y);
   		ctx.stroke();
