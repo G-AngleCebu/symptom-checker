@@ -62,12 +62,12 @@
 
   	// We would also need some velocity for the particles
   	// so that they can move freely across the space
-  	this.vx = -1 + Math.random() * 2;
-  	this.vy = -1 + Math.random() * 2;
+  	this.vx = -5 + Math.random() * 10;
+  	this.vy = -5 + Math.random() * 10;
 
   	// Now the radius of the particles. I want all of
   	// them to be equal in size so no Math.random() here..
-  	this.radius = 2;
+  	this.radius = 3;
 
   	// This is the method that will draw the Particle on the
   	// canvas. It is using the basic fillStyle, then we start
@@ -122,7 +122,7 @@
 
   		// Change the velocities
   		p.x += p.vx;
-  		p.y += p.vy
+  		p.y += p.vy;
 
   		// We don't want to make the particles leave the
   		// area, so just change their position when they
