@@ -43,10 +43,15 @@
 		<header>
 			<button class="element--faderight">
 				<i class="mdi mdi-chevron-left"></i>
-				Back
+				<span style="display:flex;
+										 justify-content:center;
+										 align-items:center">
+					Back
+				</span>
 			</button>
 			<h1 class="element--fadedown">Basic Information</h1>
-			<button class="element--fadeleft">
+			<button class="element--fadeleft"
+							style="margin-left:150px">
 				<i
 					class="mdi mdi-close"
 					style="color:#FEF7A6"></i>
@@ -57,8 +62,19 @@
 				<div class="input-container">
 					<label>Age</label>
 					<div class="input-field">
-						<input id="age-input" type="text" style="width:200px" maxlength="3"/>
+						<input id="age-input" type="number" style="width:150px" value="1" min="1" max="150"/>
 						<label for="age-input">years old</label>
+					</div>
+				</div>
+				<div class="input-container">
+					<label>Gender</label>
+					<div class="radio-field">
+						<input id="female-option" name="gender-input" type="radio" value="0" checked/>
+						<label for="female-option"
+									 style="width:435px">Female</label>
+						<input id="male-option" name="gender-input" type="radio" value="1"/>
+						<label for="male-option"
+									 style="width:435px">Male</label>
 					</div>
 				</div>
 			</div>
