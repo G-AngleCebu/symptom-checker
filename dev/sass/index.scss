@@ -1,6 +1,8 @@
 @import "variables";
 @import "transitions";
 @import "background";
+@import "input";
+@import "formContainer";
 
 body{
   padding: 0;
@@ -13,11 +15,13 @@ body{
 }
 
 #title{
-  color: #222;
-  font-size: 200px;
+  // color: #222;
+  color: white;
+  font-size: 180px;
   font-family: $bold-font;
   letter-spacing: -5px;
-  line-height: 170px;
+  line-height: 150px;
+  text-align: center;
 }
 
 .section-wrapper{
