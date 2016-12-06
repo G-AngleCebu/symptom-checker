@@ -10,15 +10,13 @@
         <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
         <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
         <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
-        <Input name="SymptomChecker/test" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/test" inner="1" tooltip="SymptomChecker/test desc" id="4" />
-        <Input name="SymptomChecker/addSymptoms" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/addSymptoms" inner="1" tooltip="SymptomChecker/addSymptoms desc" id="5" />
-        <Input name="SymptomChecker/receiveDiagnosisResult" type="0" type_size="1" nature="4" stm_value_name="SymptomChecker/receiveDiagnosisResult" inner="1" tooltip="SymptomChecker/receiveDiagnosisResult desc" id="6" />
-        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="7" />
+        <Input name="symptom/diagnosis" type="0" type_size="1" nature="4" stm_value_name="symptom/diagnosis" inner="1" tooltip="symptom/diagnosis desc" id="4" />
+        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" />
         <Timeline enable="0">
             <BehaviorLayer name="behavior_layer1">
                 <BehaviorKeyframe name="keyframe1" index="1">
                     <Diagram>
-                        <Box name="Get diagnosis" id="2" localization="8" tooltip="" x="402" y="42">
+                        <Box name="Diagnosis loop" id="2" localization="8" tooltip="" x="402" y="42">
                             <bitmap>media/images/box/box-python-script.png</bitmap>
                             <script language="4">
                                 <content>
@@ -28,39 +26,61 @@ import infermedica_api
 
 class MyClass(GeneratedClass):
     api = None
+    request = None
 
     def __init__(self):
         GeneratedClass.__init__(self)
 
     def onLoad(self):
-        #put initialization code here
         pass
 
     def onUnload(self):
-        #put clean-up code here
-        pass
-
-    def onInput_onStart(self, p):
-        self.api = infermedica_api.API(app_id='387887c7', app_key='170ff97b4fada9443874b2558113b559')
-        request = infermedica_api.Diagnosis(sex='male', age=35)
-        request.add_symptom('s_21', 'present')
-        request.add_symptom('s_98', 'present')
-        request.add_symptom('s_107', 'absent')
-        self.logger.info("Getting diagnosis...")
-        request = self.api.diagnosis(request)
-
-        self.onStopped(str(request))
         pass
 
     def onInput_onStop(self):
-        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
-        self.onStopped() #activate the output of the box]]>
+        self.onUnload()
+        self.onStopped()
+
+    def onInput_onStart(self, p):
+        self.api = infermedica_api.API(app_id='387887c7', app_key='170ff97b4fada9443874b2558113b559')
+        self.request = infermedica_api.Diagnosis(sex='male', age=35)
+
+        self.request.add_symptom('s_21', 'present')
+#        self.request.add_symptom('s_98', 'present')
+        self.request.add_symptom('s_107', 'absent')
+
+        self.diagnose()
+        pass
+
+    def diagnose(self):
+        self.logger.info("Getting diagnosis...")
+        self.request = self.api.diagnosis(self.request)
+        self.onStopped(str(self.request))
+
+    # receive object with age, gender
+    # ex. {"age": "20", "gender": "male"}
+    def onInput_addUserDetails(self, details):
+        self.request = infermedica_api.Diagnosis(sex=details['gender'], age=details['age'])
+
+    # receive object with {symptom_id: choice_id} key-value pairs
+    # ex. {"s_98": "absent", "s_107": "present"}
+    def onInput_addSymptoms(self, symptoms):
+        jsonSymptoms = json.loads(symptoms)
+
+        for index, (symptom_id, choice) in enumerate(jsonSymptoms.items()):
+            self.logger.info(str(symptom_id) + " + " + str(choice))
+            self.request.add_symptom(str(symptom_id), str(choice))
+        pass
+
+        self.diagnose()]]>
 </content>
                             </script>
                             <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
                             <Input name="onStart" type="0" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
-                            <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+                            <Input name="addSymptoms" type="0" type_size="1" nature="1" inner="0" tooltip="" id="4" />
+                            <Output name="receiveDiagnosis" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" />
+                            <Output name="diagnosisComplete" type="0" type_size="1" nature="1" inner="0" tooltip="" id="6" />
                         </Box>
                         <Box name="test" id="3" localization="8" tooltip="" x="801" y="35">
                             <bitmap>media/images/box/box-python-script.png</bitmap>
@@ -96,47 +116,11 @@ class MyClass(GeneratedClass):
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
                         </Box>
-                        <Box name="Receive Symptoms" id="5" localization="8" tooltip="" x="844" y="226">
-                            <bitmap>media/images/box/box-python-script.png</bitmap>
-                            <script language="4">
-                                <content>
-                                    <![CDATA[import json
-
-class MyClass(GeneratedClass):
-    def __init__(self):
-        GeneratedClass.__init__(self)
-
-    def onLoad(self):
-        #put initialization code here
-        pass
-
-    def onUnload(self):
-        #put clean-up code here
-        pass
-
-    def onInput_onStart(self, p):
-        jsonSymptoms = json.loads(p)
-
-        for symptom in jsonSymptoms:
-            self.logger.info(str(symptom["test"]))
-        #self.onStopped() #activate the output of the box
-        pass
-
-    def onInput_onStop(self):
-        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
-        self.onStopped() #activate the output of the box]]>
-</content>
-                            </script>
-                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
-                            <Input name="onStart" type="0" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
-                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
-                            <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
-                        </Box>
-                        <Box name="receive diagnosis" id="6" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="556" y="48">
+                        <Box name="receive diagnosis" id="6" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="599" y="45">
                             <bitmap>media/images/box/sensors/STM.png</bitmap>
                             <script language="4">
                                 <content>
-                                    <![CDATA[class MyClass(GeneratedClass):
+                                    <![CDATA[fclass MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
         pass
@@ -161,7 +145,7 @@ class MyClass(GeneratedClass):
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished. It contains the inserted value in ALMemory." id="4" />
                             <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
-                            <Parameter name="key" inherits_from_parent="0" content_type="3" value="SymptomChecker/receiveDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
+                            <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/receiveDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                         </Box>
                         <Box name="Initialize" id="8" localization="8" tooltip="Enter description here" x="121" y="24">
                             <bitmap>media/images/box/box-diagram.png</bitmap>
@@ -174,10 +158,11 @@ class MyClass(GeneratedClass):
                             <Input name="initialize lib_onStart" type="1" type_size="1" nature="2" inner="0" tooltip="This input has been automatically generated&#x0A;by converting several boxes into a single box." id="2" />
                             <Input name="symptom/saveGender" type="0" type_size="1" nature="4" stm_value_name="symptom/saveGender" inner="1" tooltip="symptom/saveGender desc" id="3" />
                             <Input name="symptom/saveAge" type="0" type_size="1" nature="4" stm_value_name="symptom/saveAge" inner="1" tooltip="symptom/saveAge desc" id="4" />
+                            <Output name="output" type="1" type_size="1" nature="2" inner="0" tooltip="" id="5" />
                             <Timeline enable="0">
                                 <BehaviorLayer name="behavior_layer1">
                                     <BehaviorKeyframe name="keyframe1" index="1">
-                                        <Diagram>
+                                        <Diagram scale="100">
                                             <Box name="initialize lib" id="1" localization="8" tooltip="" x="236" y="32">
                                                 <bitmap>media/images/box/box-python-script.png</bitmap>
                                                 <script language="4">
@@ -282,7 +267,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onSuccess" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished successfully." id="3" />
                                                 <Output name="onFailure" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished unsuccessfully." id="4" />
                                             </Box>
-                                            <Box name="Basic Awareness" id="11" localization="8" tooltip="This box is an interface to the module ALBasicAwareness.&#x0A;&#x0A;It is a simple way to make the robot establish and keep eye contact with people.&#x0A;&#x0A;V1.1.0" x="396" y="269">
+                                            <Box name="Basic Awareness" id="11" localization="8" tooltip="This box is an interface to the module ALBasicAwareness.&#x0A;&#x0A;It is a simple way to make the robot establish and keep eye contact with people.&#x0A;&#x0A;V1.1.0" x="396" y="321">
                                                 <bitmap>media/images/box/tracker/basicawareness.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -430,7 +415,7 @@ class MyClass(GeneratedClass):
                                                 <Input name="onSignal" type="1" type_size="1" nature="1" inner="0" tooltip="The signal that must pass only once." id="2" />
                                                 <Output name="firstTime" type="1" type_size="1" nature="2" inner="0" tooltip="Signal sent first time the onSignal input is stimulated." id="3" />
                                             </Box>
-                                            <Box name="Get Age" id="3" localization="8" tooltip="This box returns the age of the person in front of the robot.&#x0A;The detection fails when there are more or less than one person in front of the robot or when the timeout is exceeded.&#x0A;&#x0A;It is possible to set up the Confidence Threshold and the Timeout parameters for this box. " x="717" y="228">
+                                            <Box name="Get Age" id="3" localization="8" tooltip="This box returns the age of the person in front of the robot.&#x0A;The detection fails when there are more or less than one person in front of the robot or when the timeout is exceeded.&#x0A;&#x0A;It is possible to set up the Confidence Threshold and the Timeout parameters for this box. " x="717" y="280">
                                                 <bitmap>media/images/box/interaction/age.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -523,7 +508,7 @@ class MyClass(GeneratedClass):
                                                 <Parameter name="Confidence Threshold" inherits_from_parent="0" content_type="2" value="0.35" default_value="0.6" min="0" max="1" tooltip="Set the confidence threshold for the age detection." id="6" />
                                                 <Parameter name="Timeout (s)" inherits_from_parent="0" content_type="2" value="10" default_value="5" min="1" max="60" tooltip="" id="7" />
                                             </Box>
-                                            <Box name="Get Gender" id="5" localization="8" tooltip="This box returns the gender of the person in front of the robot.&#x0A;The detection fails when there are more or less than one person in front of the robot or when the timeout is exceeded.&#x0A;&#x0A;It is possible to set up the Confidence Threshold and the Timeout parameters for this box. " x="718" y="350">
+                                            <Box name="Get Gender" id="5" localization="8" tooltip="This box returns the gender of the person in front of the robot.&#x0A;The detection fails when there are more or less than one person in front of the robot or when the timeout is exceeded.&#x0A;&#x0A;It is possible to set up the Confidence Threshold and the Timeout parameters for this box. " x="718" y="402">
                                                 <bitmap>media/images/box/interaction/gender.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -619,7 +604,7 @@ class MyClass(GeneratedClass):
                                                 <Parameter name="Confidence Threshold" inherits_from_parent="0" content_type="2" value="0.35" default_value="0.6" min="0" max="1" tooltip="Set the confidence threshold for the age detection." id="6" />
                                                 <Parameter name="Timeout (s)" inherits_from_parent="0" content_type="2" value="10" default_value="5" min="1" max="60" tooltip="" id="7" />
                                             </Box>
-                                            <Box name="WakeUp" id="6" localization="0" tooltip="Call a Wake Up process.&#x0A;Stiff all joints and apply stand Init posture if the robot is Stand" x="240" y="255">
+                                            <Box name="WakeUp" id="6" localization="0" tooltip="Call a Wake Up process.&#x0A;Stiff all joints and apply stand Init posture if the robot is Stand" x="398" y="158">
                                                 <bitmap>media/images/box/movement/stiffness.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -652,7 +637,7 @@ class MyClass(GeneratedClass):
                                                 <Resource name="All motors" type="Lock" timeout="0" />
                                                 <Resource name="Stiffness" type="Lock" timeout="0" />
                                             </Box>
-                                            <Box name="saveAge" id="7" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="844" y="232">
+                                            <Box name="saveAge" id="7" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="844" y="284">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -683,7 +668,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                                                 <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/saveAge" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                                             </Box>
-                                            <Box name="saveGender" id="8" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="852" y="343">
+                                            <Box name="saveGender" id="8" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="852" y="395">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -714,7 +699,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                                                 <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/saveGender" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                                             </Box>
-                                            <Box name="raise saveGender" id="9" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="981" y="343">
+                                            <Box name="raise saveGender" id="9" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="981" y="395">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -745,7 +730,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                                                 <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/saveGender" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                                             </Box>
-                                            <Box name="raise saveAge" id="10" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="973" y="227">
+                                            <Box name="raise saveAge" id="10" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="973" y="279">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -776,7 +761,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                                                 <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/saveAge" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                                             </Box>
-                                            <Box name="Only Once" id="12" localization="8" tooltip="This box&apos;s output is stimulated only the first time the onSignal input is.&#x0A;&#x0A;Note: It is reset when the diagram containing the box is unloaded." x="562" y="221">
+                                            <Box name="Only Once" id="12" localization="8" tooltip="This box&apos;s output is stimulated only the first time the onSignal input is.&#x0A;&#x0A;Note: It is reset when the diagram containing the box is unloaded." x="562" y="273">
                                                 <bitmap>media/images/box/loop.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -800,7 +785,7 @@ class MyClass(GeneratedClass):
                                                 <Input name="onSignal" type="1" type_size="1" nature="1" inner="0" tooltip="The signal that must pass only once." id="2" />
                                                 <Output name="firstTime" type="1" type_size="1" nature="2" inner="0" tooltip="Signal sent first time the onSignal input is stimulated." id="3" />
                                             </Box>
-                                            <Box name="Only Once" id="13" localization="8" tooltip="This box&apos;s output is stimulated only the first time the onSignal input is.&#x0A;&#x0A;Note: It is reset when the diagram containing the box is unloaded." x="566" y="348">
+                                            <Box name="Only Once" id="13" localization="8" tooltip="This box&apos;s output is stimulated only the first time the onSignal input is.&#x0A;&#x0A;Note: It is reset when the diagram containing the box is unloaded." x="566" y="400">
                                                 <bitmap>media/images/box/loop.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -824,7 +809,7 @@ class MyClass(GeneratedClass):
                                                 <Input name="onSignal" type="1" type_size="1" nature="1" inner="0" tooltip="The signal that must pass only once." id="2" />
                                                 <Output name="firstTime" type="1" type_size="1" nature="2" inner="0" tooltip="Signal sent first time the onSignal input is stimulated." id="3" />
                                             </Box>
-                                            <Box name="Wait 3s" id="14" localization="8" tooltip="Wait a moment before sending a signal on the output. &#x0A;Can be stopped anytime. &#x0A;Stimulating the input again before output is activated restarts the waiting period.&#x0A;" x="538" y="26">
+                                            <Box name="Wait 1s" id="14" localization="8" tooltip="Wait a moment before sending a signal on the output. &#x0A;Can be stopped anytime. &#x0A;Stimulating the input again before output is activated restarts the waiting period.&#x0A;" x="538" y="26">
                                                 <bitmap>media/images/box/wait.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -861,16 +846,14 @@ class MyClass(GeneratedClass):
                                                 <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Start the Wait box with the configured timeout value." id="2" />
                                                 <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Stop the wait and stimulate the output." id="3" />
                                                 <Output name="timerOutput" type="1" type_size="1" nature="1" inner="0" tooltip="Send a bang once time set in parameters is elapsed, or if the box is stopped and the appropriate parameter is set." id="4" />
-                                                <Parameter name="Timeout (s)" inherits_from_parent="0" content_type="2" value="3" default_value="1" min="0" max="5000" tooltip="Duration the box waits before stimulating the output." id="5" />
+                                                <Parameter name="Timeout (s)" inherits_from_parent="0" content_type="2" value="1" default_value="1" min="0" max="5000" tooltip="Duration the box waits before stimulating the output." id="5" />
                                                 <Parameter name="Trigger timerOutput if cancelled" inherits_from_parent="0" content_type="0" value="0" default_value="1" tooltip="If the box is currently waiting and cancelled, output will be stimulated." id="6" />
                                             </Box>
                                             <Link inputowner="4" indexofinput="2" outputowner="1" indexofoutput="4" />
                                             <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
                                             <Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="3" />
-                                            <Link inputowner="3" indexofinput="2" outputowner="3" indexofoutput="5" />
                                             <Link inputowner="7" indexofinput="2" outputowner="3" indexofoutput="4" />
                                             <Link inputowner="8" indexofinput="2" outputowner="5" indexofoutput="4" />
-                                            <Link inputowner="11" indexofinput="2" outputowner="6" indexofoutput="4" />
                                             <Link inputowner="9" indexofinput="2" outputowner="8" indexofoutput="4" />
                                             <Link inputowner="10" indexofinput="2" outputowner="7" indexofoutput="4" />
                                             <Link inputowner="12" indexofinput="2" outputowner="11" indexofoutput="6" />
@@ -879,13 +862,48 @@ class MyClass(GeneratedClass):
                                             <Link inputowner="5" indexofinput="2" outputowner="13" indexofoutput="3" />
                                             <Link inputowner="14" indexofinput="2" outputowner="4" indexofoutput="3" />
                                             <Link inputowner="6" indexofinput="2" outputowner="14" indexofoutput="4" />
+                                            <Link inputowner="0" indexofinput="5" outputowner="6" indexofoutput="4" />
                                         </Diagram>
                                     </BehaviorKeyframe>
                                 </BehaviorLayer>
                             </Timeline>
                         </Box>
+                        <Box name="complete diagnosis" id="1" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="602" y="161">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[fclass MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        pass
+
+    def onLoad(self):
+        self.memory = ALProxy("ALMemory")
+
+    def onUnload(self):
+        self.memory = None
+
+    def onInput_onStart(self, p):
+        self.memory.raiseEvent(self.getParameter("key"), p)
+        self.onStopped(p)
+
+    def onInput_onStop(self):
+        self.onUnload() #~ it is recommended to call onUnload of this box in a onStop method, as the code written in onUnload is used to stop the box as well
+        pass]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onStart" type="0" type_size="1" nature="2" inner="0" tooltip="Receives the value to be inserted as an event in ALMemory." id="2" />
+                            <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                            <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished. It contains the inserted value in ALMemory." id="4" />
+                            <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
+                            <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/completeDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
+                        </Box>
                         <Link inputowner="8" indexofinput="2" outputowner="0" indexofoutput="2" />
-                        <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="4" />
+                        <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="5" />
+                        <Link inputowner="2" indexofinput="2" outputowner="8" indexofoutput="5" />
+                        <Link inputowner="2" indexofinput="4" outputowner="0" indexofoutput="4" />
+                        <Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="6" />
                     </Diagram>
                 </BehaviorKeyframe>
             </BehaviorLayer>
