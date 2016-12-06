@@ -1,1 +1,1 @@
-# Symptom Checker Pepper App
+# Symptom Checker Choregraphe App

@@ -38,7 +38,6 @@
         <File name="OpenSans-Regular" src="html/assets/Open_Sans/OpenSans-Regular.ttf" />
         <File name="OpenSans-Semibold" src="html/assets/Open_Sans/OpenSans-Semibold.ttf" />
         <File name="OpenSans-SemiboldItalic" src="html/assets/Open_Sans/OpenSans-SemiboldItalic.ttf" />
-        <File name="" src="html/js/.gitignore" />
     </Resources>
     <Topics />
     <IgnoredPaths>

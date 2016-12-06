@@ -1,0 +1,337 @@
+What is the character of your headache? (group_multiple)
+{
+    "extras": {},
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_1193",
+            "name": "Severe"
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_604",
+            "name": "Feels like \"stabbing\" or \"drilling\""
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_25",
+            "name": "Pulsing or throbbing"
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_23",
+            "name": "Feels like pressure around my head"
+        }
+    ],
+    "text": "What is the character of your headache?",
+    "type": "group_multiple"
+}
+- Severe --> Don't know / unknown
+- Feels like "stabbing" or "drilling" --> Don't know / unknown
+- Pulsing or throbbing --> Don't know / unknown
+- Feels like pressure around my head --> Yes / present
+---
+Is your headache dull? (single)
+{
+    "extras": {},
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_1541",
+            "name": "Headache, dull"
+        }
+    ],
+    "text": "Is your headache dull?",
+    "type": "single"
+}
+- Headache, dull --> Yes / present
+---
+Do your headaches occur repeatedly, with periods of relief in between? (single)
+{
+    "extras": {},
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_1188",
+            "name": "Headache with flare-ups and remissions"
+        }
+    ],
+    "text": "Do your headaches occur repeatedly, with periods of relief in between?",
+    "type": "single"
+}
+- Headache with flare-ups and remissions --> No / absent
+---
+Are your symptoms worse in times of stress? (single)
+{
+    "extras": {},
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_392",
+            "name": "Exacerbated by increased stress"
+        }
+    ],
+    "text": "Are your symptoms worse in times of stress?",
+    "type": "single"
+}
+- Exacerbated by increased stress --> Yes / present
+---
+Does your whole head ache? (single)
+{
+    "extras": {
+        "image_url": "http://static.doktor-medi.pl/images/bol-glowy-obustronny.png"
+    },
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_24",
+            "name": "Headache, generalized"
+        }
+    ],
+    "text": "Does your whole head ache?",
+    "type": "single"
+}
+- Headache, generalized --> Yes / present
+---
+Are you overly sensitive to stimuli (sound, smells, light etc)? (single)
+{
+    "extras": {},
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_133",
+            "name": "Hypersensitivity to stimuli"
+        }
+    ],
+    "text": "Are you overly sensitive to stimuli (sound, smells, light etc)?",
+    "type": "single"
+}
+- Hypersensitivity to stimuli --> No / absent
+---
+Do you have any of the following neurological symptoms? (group_multiple)
+{
+    "extras": {},
+    "items": [
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_539",
+            "name": "Convulsions"
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_315",
+            "name": "Sudden difficulty speaking / impaired speech"
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_488",
+            "name": "Light sensitivity"
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_418",
+            "name": "Stiff neck"
+        },
+        {
+            "choices": [
+                {
+                    "id": "present",
+                    "label": "Yes"
+                },
+                {
+                    "id": "absent",
+                    "label": "No"
+                },
+                {
+                    "id": "unknown",
+                    "label": "Don't know"
+                }
+            ],
+            "id": "s_145",
+            "name": "Agitation"
+        }
+    ],
+    "text": "Do you have any of the following neurological symptoms?",
+    "type": "group_multiple"
+}
+- Convulsions --> Don't know / unknown
+- Sudden difficulty speaking / impaired speech --> Don't know / unknown
+- Light sensitivity --> No / absent
+- Stiff neck --> Yes / present
+- Agitation --> No / absent
+[
+    {
+        "id": "c_55",
+        "name": "Tension-type headaches",
+        "probability": 0.9338
+    }
+]
