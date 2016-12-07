@@ -55,7 +55,9 @@ class MyClass(GeneratedClass):
     def diagnose(self):
         self.logger.info("Getting diagnosis...")
         self.request = self.api.diagnosis(self.request)
-        self.onStopped(str(self.request))
+        self.logger.info("Diagnosis received...")
+        self.logger.info(str(self.request))
+        self.receiveDiagnosis(str(self.request))
 
     # receive object with age, gender
     # ex. {"age": "20", "gender": "male"}
@@ -68,7 +70,6 @@ class MyClass(GeneratedClass):
         jsonSymptoms = json.loads(symptoms)
 
         for index, (symptom_id, choice) in enumerate(jsonSymptoms.items()):
-            self.logger.info(str(symptom_id) + " + " + str(choice))
             self.request.add_symptom(str(symptom_id), str(choice))
         pass
 
@@ -120,7 +121,7 @@ class MyClass(GeneratedClass):
                             <bitmap>media/images/box/sensors/STM.png</bitmap>
                             <script language="4">
                                 <content>
-                                    <![CDATA[fclass MyClass(GeneratedClass):
+                                    <![CDATA[class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
         pass
@@ -872,7 +873,7 @@ class MyClass(GeneratedClass):
                             <bitmap>media/images/box/sensors/STM.png</bitmap>
                             <script language="4">
                                 <content>
-                                    <![CDATA[fclass MyClass(GeneratedClass):
+                                    <![CDATA[class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
         pass
