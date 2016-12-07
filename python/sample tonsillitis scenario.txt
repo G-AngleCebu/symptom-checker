@@ -1,0 +1,143 @@
+---
+What is the character of your headache? (group_multiple)
+- Severe --> Yes / present
+- Feels like "stabbing" or "drilling" --> No / absent
+- Pulsing or throbbing --> Yes / present
+- Feels like pressure around my head --> No / absent
+No of symptoms: 12
+[{'choice_id': 'absent', 'id': 's_285'}, {'choice_id': 'absent', 'id': 's_13'}, {'choice_id': 'absent', 'id': 's_156'}, {'choice_id': 'present', 'id': 's_98'}, {'choice_id': 'present', 'id': 's_21'}, {'choice_id': 'absent', 'id': 's_119'}, {'choice_id': 'absent', 'id': 's_88'}, {'choice_id': 'absent', 'id': 's_241'}, {'choice_id': u'present', 'id': u's_1193'}, {'choice_id': u'absent', 'id': u's_604'}, {'choice_id': u'present', 'id': u's_25'}, {'choice_id': u'absent', 'id': u's_23'}]
+---
+What is your body temperature? (group_single)
+- Above 101 °F (38 °C) --> Yes / present
+- Between 99.5 and 101 °F (37 and 38 °C) --> No / absent
+No of symptoms: 14
+[{'choice_id': 'absent', 'id': 's_285'}, {'choice_id': 'absent', 'id': 's_13'}, {'choice_id': 'absent', 'id': 's_156'}, {'choice_id': 'present', 'id': 's_98'}, {'choice_id': 'present', 'id': 's_21'}, {'choice_id': 'absent', 'id': 's_119'}, {'choice_id': 'absent', 'id': 's_88'}, {'choice_id': 'absent', 'id': 's_241'}, {'choice_id': u'present', 'id': u's_1193'}, {'choice_id': u'absent', 'id': u's_604'}, {'choice_id': u'present', 'id': u's_25'}, {'choice_id': u'absent', 'id': u's_23'}, {'choice_id': u'present', 'id': u's_100'}, {'choice_id': u'absent', 'id': u's_99'}]
+---
+Do you have a sore throat? (single)
+- Pharyngeal pain --> Yes / present
+No of symptoms: 15
+[{'choice_id': 'absent', 'id': 's_285'}, {'choice_id': 'absent', 'id': 's_13'}, {'choice_id': 'absent', 'id': 's_156'}, {'choice_id': 'present', 'id': 's_98'}, {'choice_id': 'present', 'id': 's_21'}, {'choice_id': 'absent', 'id': 's_119'}, {'choice_id': 'absent', 'id': 's_88'}, {'choice_id': 'absent', 'id': 's_241'}, {'choice_id': u'present', 'id': u's_1193'}, {'choice_id': u'absent', 'id': u's_604'}, {'choice_id': u'present', 'id': u's_25'}, {'choice_id': u'absent', 'id': u's_23'}, {'choice_id': u'present', 'id': u's_100'}, {'choice_id': u'absent', 'id': u's_99'}, {'choice_id': u'present', 'id': u's_20'}]
+---
+Have you noticed white pus filled spots or layer on your tonsils or the back of your throat? (single)
+- Coated tonsills --> Yes / present
+No of symptoms: 16
+[{'choice_id': 'absent', 'id': 's_285'}, {'choice_id': 'absent', 'id': 's_13'}, {'choice_id': 'absent', 'id': 's_156'}, {'choice_id': 'present', 'id': 's_98'}, {'choice_id': 'present', 'id': 's_21'}, {'choice_id': 'absent', 'id': 's_119'}, {'choice_id': 'absent', 'id': 's_88'}, {'choice_id': 'absent', 'id': 's_241'}, {'choice_id': u'present', 'id': u's_1193'}, {'choice_id': u'absent', 'id': u's_604'}, {'choice_id': u'present', 'id': u's_25'}, {'choice_id': u'absent', 'id': u's_23'}, {'choice_id': u'present', 'id': u's_100'}, {'choice_id': u'absent', 'id': u's_99'}, {'choice_id': u'present', 'id': u's_20'}, {'choice_id': u'present', 'id': u's_610'}]
+---
+Is your tongue red? (single)
+- Tongue erythema --> Yes / present
+No of symptoms: 17
+[{'choice_id': 'absent', 'id': 's_285'}, {'choice_id': 'absent', 'id': 's_13'}, {'choice_id': 'absent', 'id': 's_156'}, {'choice_id': 'present', 'id': 's_98'}, {'choice_id': 'present', 'id': 's_21'}, {'choice_id': 'absent', 'id': 's_119'}, {'choice_id': 'absent', 'id': 's_88'}, {'choice_id': 'absent', 'id': 's_241'}, {'choice_id': u'present', 'id': u's_1193'}, {'choice_id': u'absent', 'id': u's_604'}, {'choice_id': u'present', 'id': u's_25'}, {'choice_id': u'absent', 'id': u's_23'}, {'choice_id': u'present', 'id': u's_100'}, {'choice_id': u'absent', 'id': u's_99'}, {'choice_id': u'present', 'id': u's_20'}, {'choice_id': u'present', 'id': u's_610'}, {'choice_id': u'present', 'id': u's_607'}]
+---DIAGNOSIS COMPLETE---
+{
+    "case_id": null,
+    "conditions": [
+        {
+            "id": "c_249",
+            "name": "Acute tonsillitis",
+            "probability": 0.9152
+        }
+    ],
+    "evaluation_time": null,
+    "extras": {},
+    "extras_permanent": {},
+    "lab_tests": [],
+    "patient_age": 70,
+    "patient_sex": "female",
+    "pursued": [],
+    "question": {
+        "extras": {},
+        "items": [
+            {
+                "choices": [
+                    {
+                        "id": "present",
+                        "label": "Yes"
+                    },
+                    {
+                        "id": "absent",
+                        "label": "No"
+                    },
+                    {
+                        "id": "unknown",
+                        "label": "Don't know"
+                    }
+                ],
+                "id": "s_1467",
+                "name": "Strawberry tongue"
+            }
+        ],
+        "text": "Have you noticed that your tongue has a strawberry color?",
+        "type": "single"
+    },
+    "risk_factors": [],
+    "symptoms": [
+        {
+            "choice_id": "absent",
+            "id": "s_285"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_13"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_156"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_98"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_21"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_119"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_88"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_241"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_1193"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_604"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_25"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_23"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_100"
+        },
+        {
+            "choice_id": "absent",
+            "id": "s_99"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_20"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_610"
+        },
+        {
+            "choice_id": "present",
+            "id": "s_607"
+        }
+    ]
+}

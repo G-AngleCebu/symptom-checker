@@ -38,6 +38,27 @@
         <File name="OpenSans-Regular" src="html/assets/Open_Sans/OpenSans-Regular.ttf" />
         <File name="OpenSans-Semibold" src="html/assets/Open_Sans/OpenSans-Semibold.ttf" />
         <File name="OpenSans-SemiboldItalic" src="html/assets/Open_Sans/OpenSans-SemiboldItalic.ttf" />
+        <File name="README" src="html/mdi/README.md" />
+        <File name="bower" src="html/mdi/bower.json" />
+        <File name="materialdesignicons" src="html/mdi/css/materialdesignicons.css" />
+        <File name="materialdesignicons.css" src="html/mdi/css/materialdesignicons.css.map" />
+        <File name="materialdesignicons.min" src="html/mdi/css/materialdesignicons.min.css" />
+        <File name="materialdesignicons.min.css" src="html/mdi/css/materialdesignicons.min.css.map" />
+        <File name="materialdesignicons-webfont" src="html/mdi/fonts/materialdesignicons-webfont.eot" />
+        <File name="materialdesignicons-webfont" src="html/mdi/fonts/materialdesignicons-webfont.svg" />
+        <File name="materialdesignicons-webfont" src="html/mdi/fonts/materialdesignicons-webfont.ttf" />
+        <File name="materialdesignicons-webfont" src="html/mdi/fonts/materialdesignicons-webfont.woff" />
+        <File name="materialdesignicons-webfont" src="html/mdi/fonts/materialdesignicons-webfont.woff2" />
+        <File name="license" src="html/mdi/license.md" />
+        <File name="package" src="html/mdi/package.json" />
+        <File name="preview" src="html/mdi/preview.html" />
+        <File name="_core" src="html/mdi/scss/_core.scss" />
+        <File name="_extras" src="html/mdi/scss/_extras.scss" />
+        <File name="_functions" src="html/mdi/scss/_functions.scss" />
+        <File name="_icons" src="html/mdi/scss/_icons.scss" />
+        <File name="_path" src="html/mdi/scss/_path.scss" />
+        <File name="_variables" src="html/mdi/scss/_variables.scss" />
+        <File name="materialdesignicons" src="html/mdi/scss/materialdesignicons.scss" />
     </Resources>
     <Topics />
     <IgnoredPaths>
