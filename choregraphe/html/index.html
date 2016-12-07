@@ -54,27 +54,38 @@
 							style="margin-left:150px">
 				<i
 					class="mdi mdi-close"
-					style="color:#FEF7A6"></i>
+					style="color:deepskyblue"></i>
 			</button>
 		</header>
 		<div class="form-content content--center">
 			<div class="form-card card--skew element--fadeleft">
-				<div class="input-container">
-					<label>Age</label>
-					<div class="input-field">
-						<input id="age-input" type="number" style="width:150px" value="1" min="1" max="150"/>
-						<label for="age-input">years old</label>
+				<div class="card-decor-wrapper" style="height:669px;display:inline-block;vertical-align:top">
+					<img src="./assets/stethoscope.png"
+							 style="z-index:2;
+							 				transform:scale(1.7) translate(15px, 101px);
+											filter: grayscale(100%);">
+					<div class="card-bg">
+						<div class="circle-bg"></div>
 					</div>
 				</div>
-				<div class="input-container">
-					<label>Gender</label>
-					<div class="radio-field">
-						<input id="female-option" name="gender-input" type="radio" value="0" checked/>
-						<label for="female-option"
-									 style="width:435px">Female</label>
-						<input id="male-option" name="gender-input" type="radio" value="1"/>
-						<label for="male-option"
-									 style="width:435px">Male</label>
+				<div style="display:inline-block;vertical-align:top">
+					<div class="input-container">
+						<label>Age</label>
+						<div class="input-field">
+							<input id="age-input" type="number" style="width:150px" value="1" min="1" max="150"/>
+							<label for="age-input">years old</label>
+						</div>
+					</div>
+					<div class="input-container">
+						<label>Gender</label>
+						<div class="radio-field">
+							<input id="female-option" name="gender-input" type="radio" value="0" checked/>
+							<label for="female-option"
+										 style="width:410px">Female</label>
+							<input id="male-option" name="gender-input" type="radio" value="1"/>
+							<label for="male-option"
+										 style="width:410px">Male</label>
+						</div>
 					</div>
 				</div>
 			</div>

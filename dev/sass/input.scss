@@ -1,5 +1,5 @@
 .input-container{
-  // background-color: tomato;
+  padding: 40px 60px 40px 60px;
   display: flex;
   flex-direction: column;
 
@@ -16,10 +16,11 @@
       padding: 0;
       height: 150px;
       color: $theme-color;
-      background-color: #f2f2f2;
+      // background-color: #f2f2f2;
       font-size: 100px;
       text-align: center;
       border: none;
+      border-bottom: solid 5px $theme-color;
       outline: none;
 
       &:focus{
@@ -28,25 +29,27 @@
     }
 
     & > :first-child{
-      border-top-left-radius:  5px;
-      border-bottom-left-radius: 5px;
+      // border-top-left-radius:  $border-radius;
+      // border-bottom-left-radius: $border-radius;
       overflow: hidden;
     }
 
     & > :last-child{
-      border-top-right-radius: 5px;
-      border-bottom-right-radius:  5px;
+      // border-top-right-radius: $border-radius;
+      // border-bottom-right-radius:  $border-radius;
       overflow: hidden;
     }
 
     & > label{
-      padding-right: 70px;
+      padding-left: 10px;
+      padding-right: 40px;
       color: silver;
-      background-color: #f2f2f2;
+      // background-color: #f2f2f2;
       font-size: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-bottom: solid 5px $theme-color;
     }
   }
 
@@ -65,7 +68,7 @@
 
     & > label{
       height: 150px;
-      color: silver;
+      color: $theme-color;
       background-color: #f2f2f2;
       font-size: 60px;
       display: flex;
@@ -73,19 +76,20 @@
       justify-content: center;
       box-sizing: border-box;
       border-right: none;
+      border: solid 5px $theme-color;
 
       &:first-of-type{
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
       }
 
       &:not(:first-of-type){
-        border-left: solid 2px #f4f4f4;
+        // border-left: solid 2px #f4f4f4;
       }
 
       &:last-of-type{
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
       }
     }
   }
