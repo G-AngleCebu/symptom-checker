@@ -42,22 +42,42 @@ class MyClass(GeneratedClass):
         self.onStopped()
 
     def onInput_onStart(self, p):
-        self.api = infermedica_api.API(app_id='387887c7', app_key='170ff97b4fada9443874b2558113b559')
-        self.request = infermedica_api.Diagnosis(sex='male', age=35)
+        self.api = infermedica_api.API(app_id='de9f4fd9', app_key='675302b9ab8bd6ba22f8868968f74033')
+        self.request = infermedica_api.Diagnosis(sex='female', age=70)
 
-        self.request.add_symptom('s_21', 'present')
-#        self.request.add_symptom('s_98', 'present')
-        self.request.add_symptom('s_107', 'absent')
+        self.request.add_symptom('s_285', 'absent') # weight loss
+        self.request.add_symptom('s_13', 'absent') # abdominal pain
+        self.request.add_symptom('s_156', 'absent') # nausea
+        self.request.add_symptom('s_98', 'present') # fever
+        self.request.add_symptom('s_21', 'present') # headache
+        self.request.add_symptom('s_119', 'absent') # weakness
+        self.request.add_symptom('s_88', 'absent') # shortness of breath
+        self.request.add_symptom('s_241', 'absent') # skin lesions
 
         self.diagnose()
         pass
 
     def diagnose(self):
-        self.logger.info("Getting diagnosis...")
+        self.logger.info("Getting diagnosis... Symptoms count: " + str(len(self.request.symptoms)))
+#        self.logger.info(str(self.request.symptoms))
         self.request = self.api.diagnosis(self.request)
-        self.logger.info("Diagnosis received...")
-        self.logger.info(str(self.request))
-        self.receiveDiagnosis(str(self.request))
+#        self.logger.info(self.request.conditions[0])
+
+        if self.request.conditions[0]["probability"] > 0.9:
+            self.logger.info("DIAGNOSIS COMPLETE")
+            self.fetchResult()
+        else:
+            self.logger.info("Diagnosis received...")
+            self.receiveDiagnosis(str(self.request))
+
+    def fetchResult(self):
+        conditionResult = self.request.conditions[0]
+        conditionDetails = self.api.condition_details(conditionResult["id"])
+
+        conditionDict = conditionDetails.__dict__
+        conditionDict["probability"] = conditionResult["probability"]
+        self.logger.info(str(json.dumps(conditionDict)))
+        self.diagnosisComplete(str(json.dumps(conditionDict)))
 
     # receive object with age, gender
     # ex. {"age": "20", "gender": "male"}
@@ -869,7 +889,7 @@ class MyClass(GeneratedClass):
                                 </BehaviorLayer>
                             </Timeline>
                         </Box>
-                        <Box name="complete diagnosis" id="1" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="602" y="161">
+                        <Box name="complete diagnosis" id="1" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key, and spreads the event to all its subscribers." x="621" y="158">
                             <bitmap>media/images/box/sensors/STM.png</bitmap>
                             <script language="4">
                                 <content>
@@ -898,11 +918,10 @@ class MyClass(GeneratedClass):
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished. It contains the inserted value in ALMemory." id="4" />
                             <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
-                            <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/completeDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
+                            <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/receiveCompleteDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                         </Box>
                         <Link inputowner="8" indexofinput="2" outputowner="0" indexofoutput="2" />
                         <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="5" />
-                        <Link inputowner="2" indexofinput="2" outputowner="8" indexofoutput="5" />
                         <Link inputowner="2" indexofinput="4" outputowner="0" indexofoutput="4" />
                         <Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="6" />
                     </Diagram>

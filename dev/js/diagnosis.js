@@ -8,12 +8,13 @@ var $choices = $form.find('ul#choices');
 
 // current items data
 var symptomItems;
+var currentQuestionType;
 
 (function(){
 	$form.on('submit', submitForm);
 })();
 
-// submit diagnosis question form
+// for group_multiple questions: multiple choices multiple answers (checkboxes)
 function submitForm(e){
 	e.preventDefault();
 
@@ -23,21 +24,53 @@ function submitForm(e){
 	// object to be passed to choregraphe
 	var symptomListToDiagnose = {};
 
+
+	// set default to absent if not single type question
 	symptomItems.forEach(function(item){
-		symptomListToDiagnose[item.id] = 'absent';
-		// symptomListToDiagnose.push({
-		// 	'symptom_id': item.id,
-		// 	'choice': 'absent'
-		// });
+			symptomListToDiagnose[item.id] = 'absent';
 	});
 
+	// set checked choices to present (all the items in formData are the checked items)
 	formData.forEach(function(item){
 		symptomListToDiagnose[item.value] = 'present';
 	});
 
-	console.log(formData);
-	console.log(symptomListToDiagnose);
-	console.log(JSON.stringify(symptomListToDiagnose));
+	submitDiagnosisToChoregraphe(symptomListToDiagnose);
+}
+
+// for group_single questions: multiple choices but 1 answer
+function submitGroupSingleAnswer(e){
+	var itemId = $(this).val();
+
+	// object to be passed to choregraphe
+	var symptomListToDiagnose = {};
+
+	// set default to absent
+	symptomItems.forEach(function(item){
+		symptomListToDiagnose[item.id] = 'absent';
+	});
+
+	// set the id of the pressed button to present
+	symptomListToDiagnose[itemId] = 'present';
+
+	submitDiagnosisToChoregraphe(symptomListToDiagnose);
+}
+
+// for Yes/No/Dont Know choices
+function submitSingleAnswer(e){
+	var itemId = symptomItems[0].id;
+
+	// object to be passed to choregraphe
+	var symptomListToDiagnose = {};
+
+	// set the current item id to whichever is pressed
+	symptomListToDiagnose[itemId] = $(this).val();
+
+	submitDiagnosisToChoregraphe(symptomListToDiagnose);
+}
+
+// utility function to add new symptoms to choregraphe and run diagnosis
+function submitDiagnosisToChoregraphe(symptomListToDiagnose){
 	qi.raiseEvent('diagnosis', JSON.stringify(symptomListToDiagnose));
 }
 
@@ -47,6 +80,7 @@ exports.receiveDiagnosisResult = function(data){
 	var question = diagnosisResult.question;
 	var questionItems = question.items;
 
+	currentQuestionType = question.type;
 	symptomItems = questionItems;
 
 	// clear choices list
@@ -54,18 +88,26 @@ exports.receiveDiagnosisResult = function(data){
 
 	$diagnosis.find('h1').html(question.text + ' (' + question.type + ')');
 
-	if(question.type == "group_single"){
+	// GROUP_SINGLE
+	if(currentQuestionType == "group_single"){
 		questionItems.forEach(function(item){
-			$choices.append('<input type="radio" id="' + item.id + '" value="' + item.id +'" name="choice" /> <label for="' + item.id + '">' + item.name + '</label><br/>');
+			$choices.append('<button type="button" name="choice" value="' + item.id + '">' + item.name + '</button>');
+			$choices.find('button[name="choice"]').on('click', submitGroupSingleAnswer);
 		});
-	} else if(question.type == "group_multiple"){
+	}
+	// GROUP_MULTIPLE
+	else if(currentQuestionType == "group_multiple"){
 		questionItems.forEach(function(item){
 			$choices.append('<input type="checkbox" id="' + item.id + '" value="' + item.id +'" name="choice" /> <label for="' + item.id + '">' + item.name + '</label><br/>');
 		});
-	} else if(question.type == "single"){
+	}
+	// SINGLE
+	else if(currentQuestionType == "single"){
 		var questionChoices = questionItems[0].choices;
-		questionChoices.forEach(function(choice){
-			$choices.append('<input type="radio" id="' + choice.id + '" value="' + choice.id +'" name="choice" /> <label for="' + choice.id + '">' + choice.label + '</label><br/>');
-		});
+		// button
+		$choices.append('<button type="button" name="choice" value="present">Yes</button>');
+		$choices.append('<button type="button" name="choice" value="absent">No</button>');
+		$choices.append('<button type="button" name="choice" value="unknown">Don\'t know</button>');
+		$choices.find('button[name="choice"]').on('click', submitSingleAnswer);
 	}
 }
