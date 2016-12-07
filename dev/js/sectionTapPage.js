@@ -1,4 +1,5 @@
 var $ = require('jquery');
+
 var pages = require('./pageController.js');
 
 (function(){
