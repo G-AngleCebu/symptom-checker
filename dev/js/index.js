@@ -7,6 +7,6 @@ require('./diagnosis.js');
 
 (function(){
 	qi.initSubscribe();
-	// pages.goToPage("#app-title");
-	pages.goToPage("#diagnosis");
+	pages.goToPage("#app-title");
+	// pages.goToPage("#diagnosis");
 })();

@@ -1,13 +1,13 @@
 (function() {
   window.requestAnimFrame = (function(){
     return  window.requestAnimationFrame       ||
-  		  window.webkitRequestAnimationFrame ||
-  		  window.mozRequestAnimationFrame    ||
-  		  window.oRequestAnimationFrame      ||
-  		  window.msRequestAnimationFrame     ||
-  		  function( callback ){
-  			window.setTimeout(callback, 1000 / 60);
-  		  };
+      		  window.webkitRequestAnimationFrame ||
+      		  window.mozRequestAnimationFrame    ||
+      		  window.oRequestAnimationFrame      ||
+      		  window.msRequestAnimationFrame     ||
+      		  function( callback ){
+      			window.setTimeout(callback, 1000 / 60);
+      		  };
   })();
 
   // Initializing the canvas
@@ -32,7 +32,8 @@
   // Function to paint the canvas black
   function paintCanvas() {
   	// Set the fill color to black
-  	ctx.fillStyle = "rgba(255,255,255,1)";
+  	// ctx.fillStyle = "rgba(255,255,255,1)";
+    ctx.fillStyle = "rgba(13,131,254,1)";
 
   	// This will create a rectangle of white color from the
   	// top left (0,0) to the bottom right corner (W,H)
@@ -79,7 +80,7 @@
   	// whether the arc is to be drawn in counter clockwise or
   	// in a clockwise direction. False for clockwise.
   	this.draw = function() {
-  		ctx.fillStyle = "silver";
+  		ctx.fillStyle = "#67b0fe";
   		ctx.beginPath();
   		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
 
@@ -170,7 +171,8 @@
 
   		// Draw the line
   		ctx.beginPath();
-  		ctx.strokeStyle = "rgba(200,200,200,"+ (1.2-dist/minDist) +")";
+  		// ctx.strokeStyle = "rgba(200,200,200,"+ (1.2-dist/minDist) +")";
+      ctx.strokeStyle = "rgba(103,176,254,"+ (1.2-dist/minDist) +")";
   		ctx.moveTo(p1.x, p1.y);
   		ctx.lineTo(p2.x, p2.y);
   		ctx.stroke();

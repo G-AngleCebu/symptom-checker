@@ -5,23 +5,9 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 	<script src="/libs/qimessaging/1.0/qimessaging.js"></script>
 	<link rel=stylesheet href="styles.css">
+	<link rel=stylesheet href="./mdi/css/materialdesignicons.min.css">
 </head>
 <body>
-	<!-- <h1>Symptom Checker</h1>
-	<hr/>
-
-	<div id="content">
-		<h2 id="question"></h2>
-		<div id="choices">Getting diagnosis...</div>
-	</div>
-
-	<input type="submit"> -->
-
-	<!-- <form>
-		<input type="checkbox" name="headache" value="headache" id="headache" /> <label for="headache">Headache</label>
-		<input type="checkbox" name="fever" value="fever" id="fever" /> <label for="fever">Fever</label>
-		<input type="submit">
-	</form> -->
 	<canvas id="canvas" height="1067px" width="1707px"></canvas>
 
 	<div id="app-title"
@@ -31,10 +17,10 @@
 					width:100%;
 					height:100%;
 					display:flex;
-					justify-content: flex-start;
+					justify-content: center;
 					align-items: center;
 					box-sizing: border-box; ">
-			<h1 id="title" class="element--fadeup">MEDICAL</br>ASSISTANT</h1>
+			<h1 id="title" class="element--fadeup">Medical</br>Assistant</h1>
 		</div>
 	</div>
 
@@ -48,27 +34,50 @@
 		</form>
 	</div>
 
-	<div id="age-form" class="section-wrapper">
-		<div style="
-					padding-left: 50px;
-					width:100%;
-					height:100%;
-					display:flex;
-					justify-content: flex-start;
-					align-items: center;
-					box-sizing: border-box; ">
-			<h1 id="title" class="element--fadeup">PEPPER MEDIC</h1>
-		<div>
-	</div>
-
-	<div id="checkbox-symptoms-form" class="section-wrapper">
-		<div class="card element--faderight">Page2</div>
-		<div class="card1 element--fadeup"></div>
-	</div>
-
-	<div id="search-symptoms-form" class="section-wrapper">
-		<div class="card element--faderight">Page3</div>
-		<div class="card1 element--fadeup"></div>
+	<!-- Age form -->
+	<div id="age-form" class="section-wrapper form-container">
+		<header>
+			<button class="element--faderight">
+				<i class="mdi mdi-chevron-left"></i>
+				<span style="display:flex;
+										 justify-content:center;
+										 align-items:center">
+					Back
+				</span>
+			</button>
+			<h1 class="element--fadedown">Basic Information</h1>
+			<button class="element--fadeleft"
+							style="margin-left:150px">
+				<i
+					class="mdi mdi-close"
+					style="color:#FEF7A6"></i>
+			</button>
+		</header>
+		<div class="form-content content--center">
+			<div class="form-card card--skew element--fadeleft">
+				<div class="input-container">
+					<label>Age</label>
+					<div class="input-field">
+						<input id="age-input" type="number" style="width:150px" value="1" min="1" max="150"/>
+						<label for="age-input">years old</label>
+					</div>
+				</div>
+				<div class="input-container">
+					<label>Gender</label>
+					<div class="radio-field">
+						<input id="female-option" name="gender-input" type="radio" value="0" checked/>
+						<label for="female-option"
+									 style="width:435px">Female</label>
+						<input id="male-option" name="gender-input" type="radio" value="1"/>
+						<label for="male-option"
+									 style="width:435px">Male</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			footer
+		</footer>
 	</div>
 
 	<script src="js/bundle.min.js"></script>
