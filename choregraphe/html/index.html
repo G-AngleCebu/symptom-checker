@@ -8,21 +8,6 @@
 	<link rel=stylesheet href="./mdi/css/materialdesignicons.min.css">
 </head>
 <body>
-	<!-- <h1>Symptom Checker</h1>
-	<hr/>
-
-	<div id="content">
-		<h2 id="question"></h2>
-		<div id="choices">Getting diagnosis...</div>
-	</div>
-
-	<input type="submit"> -->
-
-	<!-- <form>
-		<input type="checkbox" name="headache" value="headache" id="headache" /> <label for="headache">Headache</label>
-		<input type="checkbox" name="fever" value="fever" id="fever" /> <label for="fever">Fever</label>
-		<input type="submit">
-	</form> -->
 	<canvas id="canvas" height="1067px" width="1707px"></canvas>
 
 	<div id="app-title"
@@ -39,6 +24,17 @@
 		</div>
 	</div>
 
+	<div id="diagnosis" class="section-wrapper">
+		<h1>initial symptoms</h1>
+		
+		<form>
+			<ul id="choices">
+			</ul>
+			<input type="submit" />
+		</form>
+	</div>
+
+	<!-- Age form -->
 	<div id="age-form" class="section-wrapper form-container">
 		<header>
 			<button class="element--faderight">
