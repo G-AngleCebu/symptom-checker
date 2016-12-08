@@ -57,13 +57,15 @@
 	<!--
 	*
 	*
-		Age Form
+		Age and Gender Form
 	*
 	*
  	-->
-	<div id="age-form" class="section-wrapper form-container">
+	<div id="info-1-form" class="section-wrapper form-container">
 		<header>
-			<button class="element--faderight">
+			<button class="nav-button element--faderight"
+							data-page="app-title"
+							style="visibility: hidden;">
 				<i class="mdi mdi-chevron-left"></i>
 				<span style="display:flex;
 										 justify-content:center;
@@ -72,7 +74,8 @@
 				</span>
 			</button>
 			<h1 class="element--fadeup">Basic Information</h1>
-			<button class="element--fadeleft"
+			<button class="nav-button element--fadeleft"
+							data-page="app-title"
 							style="margin-left:150px">
 				<i
 					class="mdi mdi-close"
@@ -114,8 +117,84 @@
 		</div>
 		<footer>
 			<button type="button"
-							class="element--fadedown"
-							data-page="">
+							class="nav-button element--fadedown"
+							data-page="info-2-form">
+				Next
+				<i class="mdi mdi-chevron-right"
+					 style="font-size:50px"></i>
+			</button>
+		</footer>
+	</div>
+
+	<!--
+	*
+	*
+		Weight and Height
+	*
+	*
+ 	-->
+	<div id="info-2-form" class="section-wrapper form-container">
+		<header>
+			<button class="nav-button element--faderight"
+							data-page="info-1-form">
+				<i class="mdi mdi-chevron-left"></i>
+				<span style="display:flex;
+										 justify-content:center;
+										 align-items:center">
+					Back
+				</span>
+			</button>
+			<h1 class="element--fadedown">Basic Information</h1>
+			<button class="nav-button element--fadeleft"
+							data-page="app-title"
+							style="margin-left:150px">
+				<i
+					class="mdi mdi-close"
+					style="color:royalblue"></i>
+			</button>
+		</header>
+		<div class="form-content content--center">
+			<div class="form-card card--skew element--faderight"
+					 style="width:1344.160px">
+				<div class="card-decor-wrapper"
+							style="height:674px;display:inline-block;vertical-align:top">
+					<img src="./assets/first-aid.png"
+							 style="width:270px;
+							 				z-index:2;
+							 				transform:scale(1.7) translate(30px, 151px);
+											filter: grayscale(100%);">
+					<div class="card-bg">
+						<div class="circle-bg"></div>
+					</div>
+				</div>
+				<div style="display:inline-block;vertical-align:top">
+					<div class="input-container">
+						<label>
+							Weight
+							<span class="optional-tag"> Optional</span>
+						</label>
+						<div class="input-field">
+							<input id="weight-input" type="number" style="width:150px" value="0" min="1" max="150"/>
+							<label for="weight-input">kg</label>
+						</div>
+					</div>
+					<div class="input-container">
+						<label>
+							Height
+							<span class="optional-tag"> Optional</span>
+						</label>
+						<div class="input-field">
+							<input id="height-input" type="number" style="width:150px" value="0" min="1" max="150"/>
+							<label for="height-input">cm</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<button type="button"
+							class="nav-button element--fadedown"
+							data-page="info-2-form">
 				Next
 				<i class="mdi mdi-chevron-right"
 					 style="font-size:50px"></i>

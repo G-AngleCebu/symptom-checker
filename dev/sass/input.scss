@@ -7,6 +7,12 @@
     margin-top: 20px;
     font-size: 60px;
     color: $theme-color;
+
+    & > .optional-tag{
+      color: silver;
+      font-size: 30px;
+      font-style: italic;
+    }
   }
 
   & > .input-field{
