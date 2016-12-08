@@ -1,0 +1,51 @@
+/*
+ *
+ * Temporary styles for testing
+ *
+ */
+
+#diagnosis.section-wrapper {
+	width: 90%;
+	margin: auto;
+
+	h1 {
+		font-size: 60pt;
+	}
+
+	ul#choices {
+		font-size: 48pt;
+		padding: 0;
+		padding-left: 10px;
+
+		input[type="checkbox"] {
+			-webkit-transform: scale(2); /* Safari and Chrome */
+			transform: scale(2);
+		}
+
+		label {
+			line-height: 1.6em;
+		}
+	}
+
+
+	input[type="submit"], button {
+		display: block;
+		font-size: 36pt;
+		padding-top: 40px;
+		padding-bottom: 40px;
+		margin-bottom: 10px;
+
+		width: 100%;
+
+		outline: none;
+		border: none;
+
+		&:active{
+			background-color: darken(gray, 5%);
+		}
+	}
+}
+
+#diagnosis-result.section-wrapper {
+	font-size: 36pt;
+}

@@ -59,6 +59,7 @@
         <File name="_path" src="html/mdi/scss/_path.scss" />
         <File name="_variables" src="html/mdi/scss/_variables.scss" />
         <File name="materialdesignicons" src="html/mdi/scss/materialdesignicons.scss" />
+        <File name="stethoscope" src="html/assets/stethoscope.png" />
     </Resources>
     <Topics />
     <IgnoredPaths>
