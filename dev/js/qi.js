@@ -4,6 +4,7 @@
 *
 */
 var diagnosis = require('./diagnosis.js');
+var diagnosisResult = require('./diagnosisResult.js');
 var userDetails = require('./userDetails.js');
 
 var session = new QiSession();
@@ -15,6 +16,10 @@ exports.initSubscribe = function(){
 		{
 			"eventName": "receiveDiagnosisResult",
 			"function": diagnosis.receiveDiagnosisResult
+		},
+		{
+			"eventName": "receiveCompleteDiagnosisResult",
+			"function": diagnosisResult.receiveCompleteDiagnosisResult
 		},
 		{
 			"eventName": "saveAge",
