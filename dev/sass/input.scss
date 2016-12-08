@@ -16,7 +16,7 @@
       padding: 0;
       height: 150px;
       color: $theme-color;
-      // background-color: #f2f2f2;
+      background-color: transparent;
       font-size: 100px;
       text-align: center;
       border: none;
@@ -43,7 +43,7 @@
     & > label{
       padding-left: 10px;
       padding-right: 40px;
-      color: silver;
+      color: #222;
       // background-color: #f2f2f2;
       font-size: 50px;
       display: flex;
@@ -69,14 +69,17 @@
     & > label{
       height: 150px;
       color: $theme-color;
-      background-color: #f2f2f2;
+      background-color: transparent;
       font-size: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      border-right: none;
       border: solid 5px $theme-color;
+      border-right: none;
+
+      -webkit-transition: background-color .5s, color .5s ease-in-out;
+              transition: background-color .5s, color .5s ease-in-out;
 
       &:first-of-type{
         border-top-left-radius: $border-radius;
@@ -84,10 +87,11 @@
       }
 
       &:not(:first-of-type){
-        // border-left: solid 2px #f4f4f4;
+        // border-left: none;
       }
 
       &:last-of-type{
+        border-right: solid 5px $theme-color;
         border-top-right-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
       }
