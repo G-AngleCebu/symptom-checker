@@ -60,6 +60,7 @@
         <File name="_variables" src="html/mdi/scss/_variables.scss" />
         <File name="materialdesignicons" src="html/mdi/scss/materialdesignicons.scss" />
         <File name="stethoscope" src="html/assets/stethoscope.png" />
+        <File name="first-aid" src="html/assets/first-aid.png" />
     </Resources>
     <Topics />
     <IgnoredPaths>

@@ -3,8 +3,8 @@ var qi = require('./qi.js');
 var pages = require('./pageController.js');
 
 // cache dom
-var $diagnosis = $('#diagnosis');
-var $form = $diagnosis.find('form');
+var $diagnosisForm = $('form#dynamic-form');
+// var $submitButton = $diagnosisForm.find('button[type="submit"]');
 var $choices = $('#form-area');
 
 // current items data
@@ -12,7 +12,7 @@ var symptomItems;
 var currentQuestionType;
 
 (function(){
-	$form.on('submit', submitForm);
+	$diagnosisForm.on('submit', submitForm);
 })();
 
 // for group_multiple questions: multiple choices multiple answers (checkboxes)
@@ -24,7 +24,6 @@ function submitForm(e){
 
 	// object to be passed to choregraphe
 	var symptomListToDiagnose = {};
-
 
 	// set default to absent if not single type question
 	symptomItems.forEach(function(item){
@@ -38,7 +37,7 @@ function submitForm(e){
 
 	submitDiagnosisToChoregraphe(symptomListToDiagnose);
 
-	$submitButton.prop('disabled', true);
+	// $submitButton.prop('disabled', true);
 }
 
 // for group_single questions: multiple choices but 1 answer
@@ -75,13 +74,13 @@ function submitSingleAnswer(e){
 // utility function to add new symptoms to choregraphe and run diagnosis
 function submitDiagnosisToChoregraphe(symptomListToDiagnose){
 	$choices.find('button').prop('disabled', true);
-	$submitButton.prop('disabled', true);
+	// $submitButton.prop('disabled', true);
 	qi.raiseEvent('diagnosis', JSON.stringify(symptomListToDiagnose));
 }
 
-// receives diagnosis result (see sample_data/diagnosis_result.json)
+// receives diagnosis result (see sample_data/sample diagnosis result.json)
 exports.receiveDiagnosisResult = function(data){
-	pages.goToPage("#diagnosis");
+	pages.goToPage("#dynamic-form");
 
 	var diagnosisResult = JSON.parse(data);
 	var question = diagnosisResult.question;
@@ -93,10 +92,12 @@ exports.receiveDiagnosisResult = function(data){
 	// clear choices list
 	$choices.html('');
 
-	$diagnosis.find('h1').html(question.text);
-	// $diagnosis.find('h1').html(question.text + ' (' + question.type + ')');
+	$('#question').text(question.text);
 
-	$submitButton.hide();
+	// $diagnosisForm.find('h1').html(question.text);
+	// $diagnosisForm.find('h1').html(question.text + ' (' + question.type + ')');
+
+	// $submitButton.hide();
 
 	// GROUP_SINGLE
 	if(currentQuestionType == "group_single"){
@@ -125,10 +126,12 @@ exports.receiveDiagnosisResult = function(data){
 						item.name+
 					'</label>'+
 				'</div>');
+			
 		});
+		$choices.append('<button type="submit">Submit</button>');
 
-		$submitButton.prop('disabled', false);
-		$submitButton.show();
+		// $submitButton.prop('disabled', false);
+		// $submitButton.show();
 	}
 	// SINGLE
 	else if(currentQuestionType == "single"){
@@ -141,28 +144,21 @@ exports.receiveDiagnosisResult = function(data){
 		$choices.append(
 			'<input id="yes-option" name="choice" type="radio" value="present"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="yes-option">
-					YES
-				</label>'+
+				'<label class="radio-label" for="yes-option">YES</label>'+
 			'</div>');
 
 		$choices.append(
 			'<input id="no-option" name="choice" type="radio" value="absent"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="no-option">
-					NO
-				</label>'+
+				'<label class="radio-label" for="no-option">NO</label>'+
 			'</div>');
 
 		$choices.append(
 			'<input id="dontknow-option" name="choice" type="radio" value="unknown"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="dontknow-option">
-					DON\'T KNOW
-				</label>'+
+				'<label class="radio-label" for="dontknow-option">DON\'T KNOW</label>'+
 			'</div>');
 
 		$choices.find('input[name="choice"]').on('click', submitSingleAnswer);
->>>>>>> Stashed changes
 	}
 }
