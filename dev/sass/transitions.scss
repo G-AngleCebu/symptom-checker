@@ -174,3 +174,39 @@ $offset: 50%;
   to   { transform: translateX(0);
          opacity: 1;}
 }
+
+//-----------
+// Fade right
+//-----------
+
+.element--fadein {
+  animation-name: FADEIN;
+  animation-duration: $anim-speed;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: ease-in-out;
+
+  -webkit-animation-name: FADEIN;
+  -webkit-animation-duration: $anim-speed;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out;
+
+}
+
+@-webkit-keyframes FADEIN {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-moz-keyframes FADEIN {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-o-keyframes FADEIN {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes FADEIN {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

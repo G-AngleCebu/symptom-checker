@@ -74,7 +74,7 @@
 					Back
 				</span>
 			</button>
-			<h1 class="element--fadeup">Basic Information</h1>
+			<h1 class="element--fadeup">Age and Gender</h1>
 			<button class="nav-button element--fadeleft"
 							data-page="app-title"
 							style="margin-left:150px">
@@ -145,7 +145,7 @@
 					Back
 				</span>
 			</button>
-			<h1 class="element--fadedown">Basic Information</h1>
+			<h1 class="element--fadedown">Weight and Height</h1>
 			<button class="nav-button element--fadeleft"
 							data-page="app-title"
 							style="margin-left:150px">
@@ -175,7 +175,7 @@
 							<span class="optional-tag"> Optional</span>
 						</label>
 						<div class="input-field">
-							<input id="weight-input" type="number" style="width:150px" value="0" min="1" max="150"/>
+							<input id="weight-input" type="number" style="width:300px" value="0" min="1" max="150"/>
 							<label for="weight-input">kg</label>
 						</div>
 					</div>
@@ -185,7 +185,7 @@
 							<span class="optional-tag"> Optional</span>
 						</label>
 						<div class="input-field">
-							<input id="height-input" type="number" style="width:150px" value="0" min="1" max="150"/>
+							<input id="height-input" type="number" style="width:300px" value="0" min="1" max="150"/>
 							<label for="height-input">cm</label>
 						</div>
 					</div>
@@ -195,12 +195,50 @@
 		<footer>
 			<button type="button"
 							class="nav-button element--fadedown"
-							data-page="info-2-form">
-				Next
+							data-page="dynamic-form">
+				Begin
 				<i class="mdi mdi-chevron-right"
 					 style="font-size:50px"></i>
 			</button>
 		</footer>
+	</div>
+
+	<!--
+	*
+	*
+		Dynamic form
+	*
+	*
+	-->
+	<div id="dynamic-form" class="section-wrapper form-container dynamic-form element--fadein">
+		<div class="question-area">
+			<span id="question" class="element--fadeup">
+				Is your head painful right now?
+			</span>
+		</div>
+		<div id="form-area" class="element--faderight">
+			<input id="q1" name="q1" type="checkbox"/>
+			<div class="dynamic-input-wrapper element--fadedown">
+				<label class="checkbox-label" for="q1">
+					<span class="toggle-box"></span>
+					Yes
+				</label>
+			</div>
+			<input id="q2" name="q1" type="checkbox"/>
+			<div class="dynamic-input-wrapper element--fadedown">
+				<label class="checkbox-label" for="q2">
+					<span class="toggle-box"></span>
+					No
+				</label>
+			</div>
+			<input id="q3" name="q1" type="checkbox"/>
+			<div class="dynamic-input-wrapper element--fadedown">
+				<label class="checkbox-label" for="q3">
+					<span class="toggle-box"></span>
+					I don't know
+				</label>
+			</div>
+		</div>
 	</div>
 
 	<script src="js/bundle.min.js"></script>

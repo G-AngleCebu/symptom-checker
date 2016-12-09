@@ -5,8 +5,7 @@ var pages = require('./pageController.js');
 // cache dom
 var $diagnosis = $('#diagnosis');
 var $form = $diagnosis.find('form');
-var $choices = $form.find('ul#choices');
-var $submitButton = $form.find('input[type="submit"]');
+var $choices = $('#form-area');
 
 // current items data
 var symptomItems;
@@ -102,14 +101,30 @@ exports.receiveDiagnosisResult = function(data){
 	// GROUP_SINGLE
 	if(currentQuestionType == "group_single"){
 		questionItems.forEach(function(item){
-			$choices.append('<div><button type="button" name="choice" value="' + item.id + '">' + item.name + '</button></div>');
+			// $choices.append('<button type="button" name="choice" value="' + item.id + '">' + item.name + '</button>');
+			$choices.append(
+				'<input id="' + item.id + '" name="choice" type="radio" value="' + item.id + '"/>'+
+				'<div class="dynamic-input-wrapper element--fadedown">'+
+					'<label class="radio-label" for="' + item.id + '">'+
+						item.name+
+					'</label>'+
+				'</div>');
+			$choices.find('input[name="choice"]').on('click', submitGroupSingleAnswer);
 		});
 		$choices.find('button[name="choice"]').on('click', submitGroupSingleAnswer);
 	}
 	// GROUP_MULTIPLE
 	else if(currentQuestionType == "group_multiple"){
 		questionItems.forEach(function(item){
-			$choices.append('<input type="checkbox" id="' + item.id + '" value="' + item.id +'" name="choice" /> <label for="' + item.id + '">' + item.name + '</label><br/>');
+			// $choices.append('<input type="checkbox" id="' + item.id + '" value="' + item.id +'" name="choice" /> <label for="' + item.id + '">' + item.name + '</label><br/>');
+			$choices.append(
+				'<input id="' + item.id + '" name="choice" type="checkbox" value="' + item.id + '"/>'+
+				'<div class="dynamic-input-wrapper element--fadedown">'+
+					'<label class="checkbox-label" for="' + item.id + '">'+
+						'<span class="toggle-box"></span>'+
+						item.name+
+					'</label>'+
+				'</div>');
 		});
 
 		$submitButton.prop('disabled', false);
@@ -119,9 +134,35 @@ exports.receiveDiagnosisResult = function(data){
 	else if(currentQuestionType == "single"){
 		var questionChoices = questionItems[0].choices;
 		// button
-		$choices.append('<div><button type="button" name="choice" value="present">Yes</button></div>');
-		$choices.append('<div><button type="button" name="choice" value="absent">No</button></div>');
-		$choices.append('<div><button type="button" name="choice" value="unknown">Don\'t know</button></div>');
-		$choices.find('button[name="choice"]').on('click', submitSingleAnswer);
+
+		// $choices.append('<button type="button" name="choice" value="present">Yes</button>');
+		// $choices.append('<button type="button" name="choice" value="absent">No</button>');
+		// $choices.append('<button type="button" name="choice" value="unknown">Don\'t know</button>');
+		$choices.append(
+			'<input id="yes-option" name="choice" type="radio" value="present"/>'+
+			'<div class="dynamic-input-wrapper element--fadedown">'+
+				'<label class="radio-label" for="yes-option">
+					YES
+				</label>'+
+			'</div>');
+
+		$choices.append(
+			'<input id="no-option" name="choice" type="radio" value="absent"/>'+
+			'<div class="dynamic-input-wrapper element--fadedown">'+
+				'<label class="radio-label" for="no-option">
+					NO
+				</label>'+
+			'</div>');
+
+		$choices.append(
+			'<input id="dontknow-option" name="choice" type="radio" value="unknown"/>'+
+			'<div class="dynamic-input-wrapper element--fadedown">'+
+				'<label class="radio-label" for="dontknow-option">
+					DON\'T KNOW
+				</label>'+
+			'</div>');
+
+		$choices.find('input[name="choice"]').on('click', submitSingleAnswer);
+>>>>>>> Stashed changes
 	}
 }
