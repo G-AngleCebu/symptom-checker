@@ -53,6 +53,45 @@
     background-color: white;
     overflow-y: scroll;
     box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    -webkit-transition: width 1s ease-in-out, background-color 1s ease-in-out;
+            transition: width 1s ease-in-out, background-color 1s ease-in-out;
+
+    &:empty{
+      width: 100%;
+      background-color: transparentize(white, 1);
+
+      &:before{
+        content: '';
+        width: 200px;
+        height: 200px;
+        background-color: transparent;
+        border: solid 25px white;
+        border-right-color: transparent;
+        border-radius: 50%;
+        box-sizing: border-box;
+        position: absolute;
+        top: calc(50% - (200px / 2));
+        left: calc(50% - (200px / 2));
+        filter: drop-shadow(0px 0px 10px darken($theme-color, 30%));
+        transform-origin: center;
+
+        animation-name: ROTATE;
+        animation-duration: 1s;
+        animation-direction: normal;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        -webkit-animation-name: ROTATE;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-direction: normal;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+      }
+    }
 
     & > .dynamic-input-wrapper{
       height: 100%;

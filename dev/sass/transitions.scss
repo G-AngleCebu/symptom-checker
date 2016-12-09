@@ -210,3 +210,37 @@ $offset: 50%;
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+//-----------
+// Rotate
+//-----------
+
+.element--rotate {
+  animation-name: ROTATE;
+  animation-duration: $anim-speed;
+  animation-direction: normal;
+  animation-timing-function: ease-in-out;
+
+  -webkit-animation-name: ROTATE;
+  -webkit-animation-duration: $anim-speed;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-in-out;
+
+}
+
+@-webkit-keyframes ROTATE {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg);}
+}
+@-moz-keyframes ROTATE {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg);}
+}
+@-o-keyframes ROTATE {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg);}
+}
+@keyframes ROTATE {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg);}
+}
