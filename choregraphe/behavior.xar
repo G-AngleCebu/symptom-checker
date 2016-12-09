@@ -11,7 +11,10 @@
         <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
         <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
         <Input name="symptom/diagnosis" type="0" type_size="1" nature="4" stm_value_name="symptom/diagnosis" inner="1" tooltip="symptom/diagnosis desc" id="4" />
-        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" />
+        <Input name="symptom/startDiagnosis" type="0" type_size="1" nature="4" stm_value_name="symptom/startDiagnosis" inner="1" tooltip="symptom/startDiagnosis desc" id="5" />
+        <Input name="symptom/setAgeGender" type="0" type_size="1" nature="4" stm_value_name="symptom/setAgeGender" inner="1" tooltip="symptom/setAgeGender desc" id="6" />
+        <Input name="symptom/playButtonSound" type="0" type_size="1" nature="4" stm_value_name="symptom/playButtonSound" inner="1" tooltip="symptom/playButtonSound desc" id="7" />
+        <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="8" />
         <Timeline enable="0">
             <BehaviorLayer name="behavior_layer1">
                 <BehaviorKeyframe name="keyframe1" index="1">
@@ -32,6 +35,7 @@ class MyClass(GeneratedClass):
         GeneratedClass.__init__(self)
 
     def onLoad(self):
+        self.api = infermedica_api.API(app_id='de9f4fd9', app_key='675302b9ab8bd6ba22f8868968f74033')
         pass
 
     def onUnload(self):
@@ -41,10 +45,13 @@ class MyClass(GeneratedClass):
         self.onUnload()
         self.onStopped()
 
-    def onInput_onStart(self, p):
-        self.api = infermedica_api.API(app_id='de9f4fd9', app_key='675302b9ab8bd6ba22f8868968f74033')
-        self.request = infermedica_api.Diagnosis(sex='female', age=70)
+    def onInput_setUserDetails(self, p):
+        userDetails = json.loads(p)
+        gender = str(userDetails['gender'])
+        age = userDetails['age']
+        self.request = infermedica_api.Diagnosis(sex=gender, age=age)
 
+    def onInput_onStart(self, p):
         self.request.add_symptom('s_285', 'absent') # weight loss
         self.request.add_symptom('s_13', 'absent') # abdominal pain
         self.request.add_symptom('s_156', 'absent') # nausea
@@ -76,7 +83,8 @@ class MyClass(GeneratedClass):
 
         conditionDict = conditionDetails.__dict__
         conditionDict["probability"] = conditionResult["probability"]
-        self.logger.info(str(json.dumps(conditionDict)))
+#        self.logger.info(str(json.dumps(conditionDict)))
+        self.logger.info(str(self.request))
         self.diagnosisComplete(str(json.dumps(conditionDict)))
 
     # receive object with age, gender
@@ -87,6 +95,7 @@ class MyClass(GeneratedClass):
     # receive object with {symptom_id: choice_id} key-value pairs
     # ex. {"s_98": "absent", "s_107": "present"}
     def onInput_addSymptoms(self, symptoms):
+        self.logger.info(symptoms)
         jsonSymptoms = json.loads(symptoms)
 
         for index, (symptom_id, choice) in enumerate(jsonSymptoms.items()):
@@ -100,8 +109,9 @@ class MyClass(GeneratedClass):
                             <Input name="onStart" type="0" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
                             <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
                             <Input name="addSymptoms" type="0" type_size="1" nature="1" inner="0" tooltip="" id="4" />
-                            <Output name="receiveDiagnosis" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" />
-                            <Output name="diagnosisComplete" type="0" type_size="1" nature="1" inner="0" tooltip="" id="6" />
+                            <Input name="setUserDetails" type="0" type_size="1" nature="1" inner="0" tooltip="" id="5" />
+                            <Output name="receiveDiagnosis" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="6" />
+                            <Output name="diagnosisComplete" type="0" type_size="1" nature="1" inner="0" tooltip="" id="7" />
                         </Box>
                         <Box name="test" id="3" localization="8" tooltip="" x="801" y="35">
                             <bitmap>media/images/box/box-python-script.png</bitmap>
@@ -658,7 +668,7 @@ class MyClass(GeneratedClass):
                                                 <Resource name="All motors" type="Lock" timeout="0" />
                                                 <Resource name="Stiffness" type="Lock" timeout="0" />
                                             </Box>
-                                            <Box name="saveAge" id="7" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="844" y="284">
+                                            <Box name="saveAge" id="7" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="858" y="140">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -689,7 +699,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                                                 <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/saveAge" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                                             </Box>
-                                            <Box name="saveGender" id="8" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="852" y="395">
+                                            <Box name="saveGender" id="8" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="846" y="490">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -873,10 +883,7 @@ class MyClass(GeneratedClass):
                                             <Link inputowner="4" indexofinput="2" outputowner="1" indexofoutput="4" />
                                             <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
                                             <Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="3" />
-                                            <Link inputowner="7" indexofinput="2" outputowner="3" indexofoutput="4" />
-                                            <Link inputowner="8" indexofinput="2" outputowner="5" indexofoutput="4" />
                                             <Link inputowner="9" indexofinput="2" outputowner="8" indexofoutput="4" />
-                                            <Link inputowner="10" indexofinput="2" outputowner="7" indexofoutput="4" />
                                             <Link inputowner="12" indexofinput="2" outputowner="11" indexofoutput="6" />
                                             <Link inputowner="3" indexofinput="2" outputowner="12" indexofoutput="3" />
                                             <Link inputowner="13" indexofinput="2" outputowner="11" indexofoutput="6" />
@@ -884,6 +891,9 @@ class MyClass(GeneratedClass):
                                             <Link inputowner="14" indexofinput="2" outputowner="4" indexofoutput="3" />
                                             <Link inputowner="6" indexofinput="2" outputowner="14" indexofoutput="4" />
                                             <Link inputowner="0" indexofinput="5" outputowner="6" indexofoutput="4" />
+                                            <Link inputowner="10" indexofinput="2" outputowner="3" indexofoutput="4" />
+                                            <Link inputowner="9" indexofinput="2" outputowner="5" indexofoutput="4" />
+                                            <Link inputowner="10" indexofinput="2" outputowner="7" indexofoutput="4" />
                                         </Diagram>
                                     </BehaviorKeyframe>
                                 </BehaviorLayer>
@@ -921,9 +931,11 @@ class MyClass(GeneratedClass):
                             <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/receiveCompleteDiagnosisResult" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                         </Box>
                         <Link inputowner="8" indexofinput="2" outputowner="0" indexofoutput="2" />
-                        <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="5" />
+                        <Link inputowner="6" indexofinput="2" outputowner="2" indexofoutput="6" />
                         <Link inputowner="2" indexofinput="4" outputowner="0" indexofoutput="4" />
-                        <Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="6" />
+                        <Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="7" />
+                        <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="5" />
+                        <Link inputowner="2" indexofinput="5" outputowner="0" indexofoutput="6" />
                     </Diagram>
                 </BehaviorKeyframe>
             </BehaviorLayer>

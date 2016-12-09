@@ -21,6 +21,10 @@
     outline: none;
     border: none;
     margin: 0 auto;
+
+    &:active{
+      background-color: darken($theme-color, 10%);
+    }
   }
 
   & > .question-area{
@@ -53,40 +57,41 @@
     background-color: white;
     overflow-y: scroll;
     box-sizing: border-box;
-    position: absolute;
-    right: 0;
-    top: 0;
+    // position: absolute;
+    // right: 0;
+    // top: 0;
 
-    -webkit-transition: width 1s ease-in-out, background-color 1s ease-in-out;
-            transition: width 1s ease-in-out, background-color 1s ease-in-out;
+    // -webkit-transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    //         transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 
     &:empty{
-      width: 100%;
-      background-color: transparentize(white, 1);
+      // width: 100%;
+      // background-color: transparentize(white, 1);
+      background-color: white;
 
       &:before{
         content: '';
         width: 200px;
         height: 200px;
         background-color: transparent;
-        border: solid 25px white;
+        border: solid 25px $theme-color;
         border-right-color: transparent;
         border-radius: 50%;
         box-sizing: border-box;
         position: absolute;
         top: calc(50% - (200px / 2));
         left: calc(50% - (200px / 2));
-        filter: drop-shadow(0px 0px 10px darken($theme-color, 30%));
+        filter: drop-shadow(0px 0px 10px lightgray);
         transform-origin: center;
 
         animation-name: ROTATE;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
         animation-direction: normal;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
 
         -webkit-animation-name: ROTATE;
-        -webkit-animation-duration: 1s;
+        -webkit-animation-duration: 0.5s;
         -webkit-animation-direction: normal;
         animation-iteration-count: infinite;
         -webkit-animation-timing-function: linear;
@@ -102,26 +107,25 @@
       // flex-shrink: 0;
 
       & > .radio-label{
-        padding: 30px;
+        padding: 10px;
         width: 90%;
-        color: silver;
+        min-height: 150px;
         font-size: 70px;
-        background-color: whitesmoke;
         font-family: $bold-font;
-        text-align: center;
-        box-sizing: border-box;
+        color: white;
+        background-color: $theme-color;
         border-radius: 7px;
-        -webkit-box-shadow: inset 0px 0px 20px 0px darken(whitesmoke, 20%);
-           -moz-box-shadow: inset 0px 0px 20px 0px darken(whitesmoke, 20%);
-                box-shadow: inset 0px 0px 20px 0px darken(whitesmoke, 20%);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        border: none;
+        margin: 0 auto;
+        box-sizing: border-box;
 
         &:active{
-          color: darken($theme-color, 40%);
-          background-color: $theme-color;
-
-          -webkit-box-shadow: none;
-             -moz-box-shadow: none;
-                  box-shadow: none;
+          background-color: darken($theme-color, 10%);
         }
       }
 
@@ -140,8 +144,8 @@
           border-bottom: 3px solid silver;
         }
 
-        -webkit-transition: color .5s ease-in-out;
-                transition: color .5s ease-in-out;
+        -webkit-transition: color .2s ease-in-out;
+                transition: color .2s ease-in-out;
 
 
         & > .toggle-box{
@@ -173,8 +177,8 @@
             transform: rotate(-45deg);
             filter: drop-shadow(0px 0px 5px gray);
 
-            -webkit-transition: opacity .5s ease-in-out;
-                    transition: opacity .5s ease-in-out;
+            -webkit-transition: opacity .2s ease-in-out;
+                    transition: opacity .2s ease-in-out;
           }
         }
 

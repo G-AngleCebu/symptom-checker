@@ -98,17 +98,17 @@
 					<div class="input-container">
 						<label>Age</label>
 						<div class="input-field">
-							<input id="age-input" type="number" style="width:150px" value="1" min="1" max="150"/>
+							<input id="age-input" type="number" style="width:150px" value="20" min="1" max="150"/>
 							<label for="age-input">years old</label>
 						</div>
 					</div>
 					<div class="input-container">
 						<label>Gender</label>
 						<div class="radio-field">
-							<input id="female-option" name="gender-input" type="radio" value="0" checked/>
+							<input id="female-option" name="gender-input" type="radio" value="female" checked/>
 							<label for="female-option"
 										 style="width:410px">Female</label>
-							<input id="male-option" name="gender-input" type="radio" value="1"/>
+							<input id="male-option" name="gender-input" type="radio" value="male"/>
 							<label for="male-option"
 										 style="width:410px">Male</label>
 						</div>
@@ -117,7 +117,7 @@
 			</div>
 		</div>
 		<footer>
-			<button type="button"
+			<button type="submit"
 							class="nav-button element--fadedown"
 							data-page="info-2-form">
 				Next
@@ -193,9 +193,9 @@
 			</div>
 		</div>
 		<footer>
-			<button type="button"
-							class="nav-button element--fadedown"
-							data-page="dynamic-form">
+			<button type="submit"
+							class="element--fadedown"
+							data-page="">
 				Begin
 				<i class="mdi mdi-chevron-right"
 					 style="font-size:50px"></i>
@@ -213,7 +213,7 @@
 	<form id="dynamic-form" class="section-wrapper form-container dynamic-form element--fadein">
 		<div class="question-area">
 			<span id="question" class="element--fadeup">
-				<!-- insert question here -->
+				Loading...
 			</span>
 		</div>
 		<div id="form-area" class="element--faderight"></div>
