@@ -1,9 +1,9 @@
 var $ = require('jquery');
 var qi = require('./qi.js');
+var translations = require('./translations.js');
 
 // cache dom
 var $diagnosisForm = $('form#dynamic-form');
-// var $submitButton = $diagnosisForm.find('button[type="submit"]');
 var $formArea = $('#form-area');
 var $questionArea = $diagnosisForm.find('.question-area');
 
@@ -36,8 +36,6 @@ function submitForm(e){
 	});
 
 	submitDiagnosisToChoregraphe(symptomListToDiagnose);
-
-	// $submitButton.prop('disabled', true);
 }
 
 // for group_single questions: multiple choices but 1 answer
@@ -78,11 +76,18 @@ function submitDiagnosisToChoregraphe(symptomListToDiagnose){
 	qi.raiseEvent('diagnosis', JSON.stringify(symptomListToDiagnose));
 }
 
+exports.startDiagnosis = function(){
+	$('#question').html(translations.translate('Loading...'));
+	qi.raiseEvent('startDiagnosis');
+}
+
 // receives diagnosis result (see sample_data/sample diagnosis result.json)
 exports.receiveDiagnosisResult = function(data){
 	var diagnosisResult = JSON.parse(data);
 	var question = diagnosisResult.question;
 	var questionItems = question.items;
+
+	console.log(diagnosisResult);
 
 	currentQuestionType = question.type;
 	symptomItems = questionItems;
@@ -92,22 +97,20 @@ exports.receiveDiagnosisResult = function(data){
 
 	// set question text
 	$questionArea.html('');
-	$questionArea.append('<span id="question" class="element--fadeup">' + question.text + '</span>');
+	$questionArea.append('<span id="question" class="element--fadeup">' + translations.translate(question.text) + '</span>');
 
 	// GROUP_SINGLE
 	if(currentQuestionType == "group_single"){
 		questionItems.forEach(function(item){
-			// $formArea.append('<button type="button" name="choice" value="' + item.id + '">' + item.name + '</button>');
 			$formArea.append(
 				'<input id="' + item.id + '" name="choice" type="radio" value="' + item.id + '"/>'+
 				'<div class="dynamic-input-wrapper element--fadedown">'+
 					'<label class="radio-label" for="' + item.id + '">'+
-						item.name+
+						translations.translate(item.name) +
 					'</label>'+
 				'</div>');
-			$formArea.find('input[name="choice"]').on('click', submitGroupSingleAnswer);
 		});
-		$formArea.find('button[name="choice"]').on('click', submitGroupSingleAnswer);
+		$formArea.find('input[name="choice"]').on('click', submitGroupSingleAnswer);
 	}
 	// GROUP_MULTIPLE
 	else if(currentQuestionType == "group_multiple"){
@@ -117,12 +120,12 @@ exports.receiveDiagnosisResult = function(data){
 				'<div class="dynamic-input-wrapper element--fadedown">'+
 					'<label class="checkbox-label" for="' + item.id + '">'+
 						'<span class="toggle-box"></span>'+
-						item.name+
+						translations.translate(item.name) +
 					'</label>'+
 				'</div>');
 			
 		});
-		$formArea.append('<button type="submit">Submit</button>');
+		$formArea.append('<button type="submit">' + translations.translate('Submit') + '</button>');
 	}
 	// SINGLE
 	else if(currentQuestionType == "single"){
@@ -131,19 +134,19 @@ exports.receiveDiagnosisResult = function(data){
 		$formArea.append(
 			'<input id="yes-option" name="choice" type="radio" value="present"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="yes-option">Yes</label>'+
+				'<label class="radio-label" for="yes-option">' + translations.translate('Yes') + '</label>'+
 			'</div>');
 
 		$formArea.append(
 			'<input id="no-option" name="choice" type="radio" value="absent"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="no-option">No</label>'+
+				'<label class="radio-label" for="no-option">' + translations.translate('No') + '</label>'+
 			'</div>');
 
 		$formArea.append(
 			'<input id="dontknow-option" name="choice" type="radio" value="unknown"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="dontknow-option">Don\'t know</label>'+
+				'<label class="radio-label" for="dontknow-option">' + translations.translate('Don\'t know') + '</label>'+
 			'</div>');
 
 		$formArea.find('input[name="choice"]').on('click', submitSingleAnswer);

@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var qi = require('./qi.js');
 var pages = require('./pageController.js');
+var diagnosis = require('./diagnosis.js');
 
 exports.age = null;
 exports.gender = null;
@@ -31,7 +32,7 @@ var $femaleGenderField = $radioFields.find('#female-option');
 
 	$form2SubmitButton.on('click', function(){
 		pages.goToPage("#dynamic-form");
-		qi.raiseEvent('startDiagnosis');
+		diagnosis.startDiagnosis();
 	});
 })();
 
