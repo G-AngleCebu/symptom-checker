@@ -1,0 +1,158 @@
+#result-page{
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  // align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+
+  &:before{
+    content: attr(data-name);
+    font-size: 300px;
+    font-family: $extra-bold-font;
+    color: transparentize(#222, .95);
+    // white-space: nowrap;
+    line-height: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: -10px;
+  }
+
+  & > #illness{
+    margin: 0;
+    color: #222;
+    font-size: 100px;
+    font-family: $extra-bold-font;
+    filter: drop-shadow(0px 0px 20px white);
+  }
+
+  & > #diagnosis{
+    color: $theme-color;
+    font-style: italic;
+    font-size: 70px;
+    filter: drop-shadow(0px 0px 10px white);
+  }
+
+  & > .severity{
+    margin: 20px;
+    display: flex;
+
+    & > .meter-bar{
+      margin: 20px 50px 20px 50px;
+      text-align: center;
+      color: silver;
+
+      & > .mdi{
+        font-size: 100px;
+        filter: drop-shadow(0px 0px 5px white);
+      }
+
+      & > .label{
+        font-size: 50px;
+        filter: drop-shadow(0px 0px 5px white);
+      }
+
+      &.active{
+        font-family: $bold-font;
+
+        &#severity-mild{
+          color: olivedrab;
+        }
+        &#severity-moderate{
+          color: orange;
+        }
+        &#severity-severe{
+          color: orangered;
+        }
+      }
+    }
+  }
+
+  & > .prevalance{
+    margin: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    color: silver;
+    font-size: 35px;
+    font-family: $bold-font;
+    text-align: center;
+
+    & > .rarity-meter-bar{
+      margin: 15px;
+
+      & > .bar{
+        width: 300px;
+        height: 15px;
+        background-color: silver;
+        border-radius: 5px;
+      }
+
+      &.active{
+        &#prevalance-common{
+          color: olivedrab;
+          & > .bar{
+            background-color: olivedrab;
+          }
+
+          & ~ .rarity-meter-bar{
+
+            & > label{
+              color: lighten(olivedrab, 20%);
+            }
+            & > .bar{
+              background-color: olivlighten(olivedrab, 20%);
+            }
+          }
+        }
+        &#prevalance-moderate{
+          color: goldenrod;
+          & > .bar{
+            background-color: goldenrod;
+          }
+
+          & ~ .rarity-meter-bar{
+            & > label{
+              color: lighten(goldenrod, 20%);
+            }
+            & > .bar{
+              background-color: lighten(goldenrod, 20%);
+            }
+          }
+        }
+        &#prevalance-rare{
+          color: darkorange;
+          & > .bar{
+            background-color: darkorange;
+          }
+
+          & ~ .rarity-meter-bar{
+            & > label{
+              color: lighten(darkorange, 20%);
+            }
+            & > .bar{
+              background-color: lighten(darkorange, 20%);
+            }
+          }
+        }
+        &#prevalance-very_rare{
+          color: orangered;
+          & > .bar{
+            background-color: orangered;
+          }
+
+          & ~ .rarity-meter-bar{
+            & > label{
+              color: lighten(orangered, 20%);
+            }
+            & > .bar{
+              background-color: lighten(orangered, 30%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
