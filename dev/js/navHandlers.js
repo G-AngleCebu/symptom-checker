@@ -12,6 +12,11 @@ var pages = require('./pageController.js');
       case 'app-title':
         pages.goToPage('#info-1-form');
         break;
+
+      case 'diagnosis-result':
+        pages.goToPage('#app-title');
+        break;
+
       default:
         break;
     }

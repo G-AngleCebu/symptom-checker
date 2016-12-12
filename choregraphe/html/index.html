@@ -18,7 +18,8 @@
 	*
  	-->
 	<div id="app-title"
-			 class="section-wrapper section-tap-page">
+			 class="section-wrapper section-tap-page"
+			 data-page="info-1-form">
 		<div style="
 					padding-left: 50px;
 					width:100%;
@@ -45,14 +46,6 @@
 			</ul>
 			<input type="submit" />
 		</form>
-	</div>
-
-	<div id="diagnosis-result" class="section-wrapper">
-		<h1 id="condition-name"></h1>
-		<h2 id="probability"></h2>
-		<p id="categories"></p>
-		<p id="hint"></p>
-		<p id="more-info"></p>
 	</div>
 
 	<!--
@@ -193,9 +186,7 @@
 			</div>
 		</div>
 		<footer>
-			<button type="submit"
-							class="element--fadedown"
-							data-page="">
+			<button type="submit" class="element--fadedown">
 				Begin
 				<i class="mdi mdi-chevron-right"
 					 style="font-size:50px"></i>

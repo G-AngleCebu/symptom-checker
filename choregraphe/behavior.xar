@@ -668,7 +668,7 @@ class MyClass(GeneratedClass):
                                                 <Resource name="All motors" type="Lock" timeout="0" />
                                                 <Resource name="Stiffness" type="Lock" timeout="0" />
                                             </Box>
-                                            <Box name="saveAge" id="7" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="858" y="140">
+                                            <Box name="saveAge" id="7" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="880" y="144">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -699,7 +699,7 @@ class MyClass(GeneratedClass):
                                                 <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
                                                 <Parameter name="key" inherits_from_parent="0" content_type="3" value="symptom/saveAge" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
                                             </Box>
-                                            <Box name="saveGender" id="8" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="846" y="490">
+                                            <Box name="saveGender" id="8" localization="8" tooltip="Stores in NAOqi&apos;s shared memory the given value at the given key." x="852" y="523">
                                                 <bitmap>media/images/box/sensors/STM.png</bitmap>
                                                 <script language="4">
                                                     <content>

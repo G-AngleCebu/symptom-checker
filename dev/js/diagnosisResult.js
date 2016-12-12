@@ -35,6 +35,8 @@ sample diagnosis result object:
 exports.receiveCompleteDiagnosisResult = function(data){
 	var diagnosisResult = JSON.parse(data);
 
+	$('#question').html('Loading...');
+
 	// console.log(diagnosisResult);
 	//
 	// $conditionName.html(diagnosisResult.name);
@@ -96,8 +98,11 @@ exports.receiveCompleteDiagnosisResult = function(data){
 							'data-page="app-title">Home</button>'+
 			'<button class="nav-button"'+
 							'data-page="doctor-page">Doctors</button>'+
-		'</div>'+
+		'</div>'
 	);
+	// $conditionName.html(diagnosisResult.name);
+	// $probability.html("Probability: " + (100 * diagnosisResult.probability) + "%");
+	// $categories.html("Categories: " + JSON.stringify(diagnosisResult.categories));
 
 	$('.severity-meter-bar').removeClass('active');
 	$('#severity-'+String(diagnosisResult.severity)).addClass('active');
@@ -105,5 +110,5 @@ exports.receiveCompleteDiagnosisResult = function(data){
 	$('.rarity-meter-bar.active').removeClass('active');
 	$('#prevalance-'+String(diagnosisResult.prevalence)).addClass('active');
 
-	pages.goToPage("#diagnosis-result");
+	pages.goToPage("#result-page");
 }
