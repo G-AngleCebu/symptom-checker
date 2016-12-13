@@ -92,12 +92,16 @@ exports.receiveDiagnosisResult = function(data){
 	currentQuestionType = question.type;
 	symptomItems = questionItems;
 
+	var questionText = translations.translate(question.text);
+
+	qi.raiseEvent('say', questionText);
+
 	// clear choices list
 	$formArea.html('');
 
 	// set question text
 	$questionArea.html('');
-	$questionArea.append('<span id="question" class="element--fadeup">' + translations.translate(question.text) + '</span>');
+	$questionArea.append('<span id="question" class="element--fadeup">' + questionText + '</span>');
 
 	// GROUP_SINGLE
 	if(currentQuestionType == "group_single"){

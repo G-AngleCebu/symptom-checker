@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var qi = require('./qi.js');
 var pages = require('./pageController.js');
 var translations = require('./translations.js');
 
@@ -38,9 +39,14 @@ exports.receiveCompleteDiagnosisResult = function(data){
 
 	$("#result-page").html('');
 
+	var conditionName = translations.translate(diagnosisResult.name);
+	var hint = translations.translate(diagnosisResult.extras.hint);
+
+	qi.raiseEvent('say', conditionName + ". " + hint);
+
 	$("#result-page").append(
-		'<h1 id="illness" class="element--fadeup">' + translations.translate(diagnosisResult.name) + '</h2>'+
-		'<span id="diagnosis" class="element--fadedown">' + translations.translate(diagnosisResult.extras.hint) + '</span>'+
+		'<h1 id="illness" class="element--fadeup">' + conditionName + '</h2>'+
+		'<span id="diagnosis" class="element--fadedown">' + hint + '</span>'+
 		'<div class="severity element--fadeleft">'+
 			'<span id="severity-mild" class="severity-meter-bar">'+
 				'<i class="mdi mdi-emoticon-happy"></i>'+
