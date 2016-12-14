@@ -12,7 +12,5 @@ require('./navHandlers.js');
 		// qi.raiseEvent('playButtonSound');
 	});
 
-	pages.goToPage("#app-title");
-
-		// pages.goToPage("#doctor-list-page");
+		pages.goToPage("#app-title");
 })();
