@@ -95,7 +95,7 @@ exports.receiveCompleteDiagnosisResult = function(data){
 			'<button class="nav-button"'+
 							'data-page="app-title">Home</button>'+
 			'<button class="nav-button"'+
-							'data-page="doctor-page">Doctors</button>'+
+							'data-page="doctor-list-page">View Doctors</button>'+
 		'</div>'+
 	);
 

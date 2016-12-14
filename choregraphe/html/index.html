@@ -235,12 +235,79 @@
 	<!--
 	*
 	*
+		Doctor List page
+	*
+	*
+	-->
+	<div id="doctor-list-page" class="section-wrapper form-container element--fadein">
+		<header>
+			<button class="nav-button element--faderight"
+							data-page="result-page">
+				<i class="mdi mdi-chevron-left"></i>
+				<span style="display:flex;
+										 justify-content:center;
+										 align-items:center">
+					Back
+				</span>
+			</button>
+			<h1 id="doctor-type" class="element--fadedown">Witch Doctors</h1>
+			<button class="nav-button element--fadeleft"
+							data-page="app-title"
+							style="margin-left:150px">
+				<i
+					class="mdi mdi-close"
+					style="color:royalblue"></i>
+			</button>
+		</header>
+		<ul id="doctor-list">
+			<li class="list-card nav-button"
+					data-page="doctor-page">
+				<img id="doctor-image" src="./assets/profile_icon.png">
+				<div id="doctor-name">Doctor 1</div>
+				<div id="doctor-location">
+					<i class="mdi mdi-map-marker"></i>
+					Location
+				</div>
+			</li>
+			<li class="list-card nav-button"
+					data-page="doctor-page">
+				<img id="doctor-image" src="./assets/profile_icon.png">
+				<div id="doctor-name">Doctor 2</div>
+				<div id="doctor-location">
+					<i class="mdi mdi-map-marker"></i>
+					Location
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<!--
+	*
+	*
 		Doctor page
 	*
 	*
 	-->
 	<div id="doctor-page" class="section-wrapper element--fadein">
-		Doctors yo
+		<header>
+			<button class="nav-button element--faderight"
+							data-page="doctor-list-page">
+				<i class="mdi mdi-chevron-left"></i>
+				<span style="display:flex;
+										 justify-content:center;
+										 align-items:center">
+					Back
+				</span>
+			</button>
+			<h1 id="doctor-type" class="element--fadedown">Doctor 2</h1>
+			<button class="nav-button element--fadeleft"
+							data-page="app-title"
+							style="margin-left:150px">
+				<i
+					class="mdi mdi-close"
+					style="color:royalblue"></i>
+			</button>
+		</header>
 	</div>
 
 	<script src="js/bundle.min.js"></script>

@@ -17,7 +17,6 @@ var pages = require('./pageController.js');
     }
   });
 
-
   //
   // NAVIGATIONS BUTTONS
   //
