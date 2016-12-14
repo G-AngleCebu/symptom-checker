@@ -9,7 +9,7 @@ require('./userDetails.js');
 (function(){
 	qi.initSubscribe();
 	$('body').on('click', '.section-tap-page, button, input[type="radio"], input[type="checkbox"], label.radio-label', function(){
-		// qi.raiseEvent('playButtonSound');
+		qi.raiseEvent('playButtonSound');
 	});
 
 	pages.goToPage("#app-title");

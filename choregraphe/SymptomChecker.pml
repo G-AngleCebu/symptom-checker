@@ -62,6 +62,7 @@
         <File name="stethoscope" src="html/assets/stethoscope.png" />
         <File name="first-aid" src="html/assets/first-aid.png" />
         <File name="what" src="html/assets/what.png" />
+        <File name="button" src="html/button.wav" />
     </Resources>
     <Topics />
     <IgnoredPaths>

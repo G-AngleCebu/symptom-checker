@@ -27,7 +27,7 @@ function submitForm(e){
 
 	// set default to absent if not single type question
 	symptomItems.forEach(function(item){
-			symptomListToDiagnose[item.id] = 'absent';
+		symptomListToDiagnose[item.id] = 'absent';
 	});
 
 	// set checked choices to present (all the items in formData are the checked items)
@@ -77,8 +77,26 @@ function submitDiagnosisToChoregraphe(symptomListToDiagnose){
 }
 
 exports.startDiagnosis = function(){
-	$('#question').html(translations.translate('Loading...'));
-	qi.raiseEvent('startDiagnosis');
+	// $('#question').html(translations.translate('Loading...'));
+	// qi.raiseEvent('startDiagnosis');
+	var initialQuestion = {
+		"question": {
+			"items": [
+			{"id": "s_285", "name": "Weight Loss"},
+			{"id": "s_13", "name": "Abdominal Pain"},
+			{"id": "s_156", "name": "Nausea"},
+			{"id": "s_98", "name": "Fever"},
+			{"id": "s_21", "name": "Headache"},
+			{"id": "s_119", "name": "Weakness"},
+			{"id": "s_88", "name": "Shortness Of Breath"},
+			{"id": "s_241", "name": "Skin Lesions"}
+			],
+			"text": "Do you have any of the following symptoms? (Check all that apply)",
+			"type": "group_multiple"
+		}
+	};
+
+	exports.receiveDiagnosisResult(JSON.stringify(initialQuestion));
 }
 
 // receives diagnosis result (see sample_data/sample diagnosis result.json)
@@ -87,14 +105,14 @@ exports.receiveDiagnosisResult = function(data){
 	var question = diagnosisResult.question;
 	var questionItems = question.items;
 
-	console.log(diagnosisResult);
+	console.log(JSON.stringify(diagnosisResult));
 
 	currentQuestionType = question.type;
 	symptomItems = questionItems;
 
 	var questionText = translations.translate(question.text);
 
-	qi.raiseEvent('say', questionText);
+	qi.sayWithExplain(questionText);
 
 	// clear choices list
 	$formArea.html('');
@@ -109,9 +127,9 @@ exports.receiveDiagnosisResult = function(data){
 			$formArea.append(
 				'<input id="' + item.id + '" name="choice" type="radio" value="' + item.id + '"/>'+
 				'<div class="dynamic-input-wrapper element--fadedown">'+
-					'<label class="radio-label" for="' + item.id + '">'+
-						translations.translate(item.name) +
-					'</label>'+
+				'<label class="radio-label" for="' + item.id + '">'+
+				translations.translate(item.name) +
+				'</label>'+
 				'</div>');
 		});
 		$formArea.find('input[name="choice"]').on('click', submitGroupSingleAnswer);
@@ -122,10 +140,10 @@ exports.receiveDiagnosisResult = function(data){
 			$formArea.append(
 				'<input id="' + item.id + '" name="choice" type="checkbox" value="' + item.id + '"/>'+
 				'<div class="dynamic-input-wrapper element--fadedown">'+
-					'<label class="checkbox-label" for="' + item.id + '">'+
-						'<span class="toggle-box"></span>'+
-						translations.translate(item.name) +
-					'</label>'+
+				'<label class="checkbox-label" for="' + item.id + '">'+
+				'<span class="toggle-box"></span>'+
+				translations.translate(item.name) +
+				'</label>'+
 				'</div>');
 			
 		});
@@ -138,19 +156,19 @@ exports.receiveDiagnosisResult = function(data){
 		$formArea.append(
 			'<input id="yes-option" name="choice" type="radio" value="present"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="yes-option">' + translations.translate('Yes') + '</label>'+
+			'<label class="radio-label" for="yes-option">' + translations.translate('Yes') + '</label>'+
 			'</div>');
 
 		$formArea.append(
 			'<input id="no-option" name="choice" type="radio" value="absent"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="no-option">' + translations.translate('No') + '</label>'+
+			'<label class="radio-label" for="no-option">' + translations.translate('No') + '</label>'+
 			'</div>');
 
 		$formArea.append(
 			'<input id="dontknow-option" name="choice" type="radio" value="unknown"/>'+
 			'<div class="dynamic-input-wrapper element--fadedown">'+
-				'<label class="radio-label" for="dontknow-option">' + translations.translate('Don\'t know') + '</label>'+
+			'<label class="radio-label" for="dontknow-option">' + translations.translate('Don\'t know') + '</label>'+
 			'</div>');
 
 		$formArea.find('input[name="choice"]').on('click', submitSingleAnswer);

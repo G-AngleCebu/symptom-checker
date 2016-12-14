@@ -47,3 +47,11 @@ exports.raiseEvent = function(eventName, value) {
 		ALMemory.raiseEvent(MEMORY_PREFIX + eventName, value);
 	});
 }
+
+exports.sayWithExplain = function(text){
+	var explainNums = [1,2,3,4,5,6,7,8,10,11];
+	var rand = explainNums[Math.floor(Math.random() * explainNums.length)];
+
+	var sayText = "^start(animations/Stand/Gestures/Explain_" + rand + ") " + text + " ^wait(animations/Stand/Gestures/Explain_" + rand + ")";
+	exports.raiseEvent('say', sayText);
+}

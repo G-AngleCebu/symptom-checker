@@ -42,7 +42,7 @@ exports.receiveCompleteDiagnosisResult = function(data){
 	var conditionName = translations.translate(diagnosisResult.name);
 	var hint = translations.translate(diagnosisResult.extras.hint);
 
-	qi.raiseEvent('say', conditionName + ". " + hint);
+	qi.sayWithExplain(conditionName + ". " + hint);
 
 	$("#result-page").append(
 		'<h1 id="illness" class="element--fadeup">' + conditionName + '</h2>'+
