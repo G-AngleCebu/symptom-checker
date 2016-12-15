@@ -14,3 +14,6 @@ require('./userDetails.js');
 
 	pages.goToPage("#app-title");
 })();
+
+// $('html:lang(en)'):
+// $('data-translate').text()
