@@ -83,7 +83,7 @@ exports.receiveCompleteDiagnosisResult = function(data){
 			'<button class="nav-button"'+
 							'data-page="app-title">' + translations.translate('Home') + '</button>'+
 			'<button class="nav-button"'+
-							'data-page="doctor-page">' + translations.translate('Doctors') + '</button>'+
+							'data-page="doctor-list-page">' + translations.translate('Doctors') + '</button>'+
 		'</div>'
 	);
 	// $conditionName.html(diagnosisResult.name);
