@@ -5,6 +5,16 @@ var translations = {};
 var japaneseEnabled = true;
 
 // symptoms
+translations['Weight Loss'] = '体重減少';
+translations['Abdominal Pain'] = '腹痛';
+translations['Nausea'] = '吐き気';
+translations['Fever'] = '熱';
+translations['Headache'] = '頭痛';
+translations['Weakness'] = '体がだるい';
+translations['Shortness Of Breath'] = '息切れ';
+translations['Skin Lesions'] = '皮膚病';
+translations['Do you have any of the following symptoms? (Check all that apply)'] = '次の症状がありますか？ （当てはまるもの全てをご確認ください）';
+
 translations['Severe'] = '痛烈な痛み';
 translations['Feels like "stabbing" or "drilling"'] = '刺すような痛み';
 translations['Pulsing or throbbing'] = '脈打っている';
