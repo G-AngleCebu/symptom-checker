@@ -145,7 +145,6 @@ exports.receiveDiagnosisResult = function(data){
 				translations.translate(item.name) +
 				'</label>'+
 				'</div>');
-			
 		});
 		$formArea.append('<button type="submit">' + translations.translate('Submit') + '</button>');
 	}

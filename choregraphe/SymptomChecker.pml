@@ -61,8 +61,9 @@
         <File name="materialdesignicons" src="html/mdi/scss/materialdesignicons.scss" />
         <File name="stethoscope" src="html/assets/stethoscope.png" />
         <File name="first-aid" src="html/assets/first-aid.png" />
-        <File name="what" src="html/assets/what.png" />
         <File name="button" src="html/button.wav" />
+        <File name="map_1" src="html/assets/map_1.JPG" />
+        <File name="profile_icon" src="html/assets/profile_icon.png" />
     </Resources>
     <Topics />
     <IgnoredPaths>

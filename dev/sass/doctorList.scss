@@ -1,0 +1,57 @@
+$card-margin: 15px;
+$card-width: calc((100% / 3) - (#{$card-margin} * 2));
+$card-height: 500px;
+
+#doctor-list{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: calc(100% - 150px);     //150px is header height
+  overflow-y: scroll;
+  font-size: 0;
+  list-style: none;
+
+  & > .list-card{
+    margin: $card-margin;
+    padding: 50px 0px 50px 0px;
+    font-size: 50px;
+    width: $card-width;
+    height: $card-height;
+    background-color: white;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    -webkit-box-shadow: 0px 0px 20px -5px gray;
+       -moz-box-shadow: 0px 0px 20px -5px gray;
+            box-shadow: 0px 0px 20px -5px gray;
+
+
+    & > #doctor-image{
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    & > #doctor-name{
+      padding: 0px 50px 0px 50px;
+      width: 100%;
+      font-family: $bold-font;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    & > #doctor-location{
+      padding: 0px 50px 0px 50px;
+      width: 100%;
+      color: $theme-color;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 45px;
+    }
+  }
+}

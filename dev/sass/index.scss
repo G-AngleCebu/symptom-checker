@@ -4,8 +4,10 @@
 @import "input";
 @import "formContainer";
 @import "diagnosis";
-@import "dynamicFormContainer";
 @import "resultPage";
+@import "doctorList";
+@import "doctorPage";
+@import "dynamicFormContainer";
 
 body{
   padding: 0;
@@ -15,6 +17,36 @@ body{
   position: relative;
   color: #222;
   font-family: $default-font;
+}
+
+header{
+  padding: 0px 20px 0px 20px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  & > h1{
+    margin: 20px 0px 20px 0px;
+    color: #222;
+    font-size: 100px;
+    text-align: center;
+    font-family: $bold-font;
+  }
+
+  & > button{
+    color: $theme-color;
+    background-color: transparent;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    border: none;
+
+    & > .mdi{
+      font-size: 100px;
+    }
+  }
 }
 
 #title{

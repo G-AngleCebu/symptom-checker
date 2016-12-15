@@ -1,0 +1,7 @@
+#doctor-page{
+  & > img{
+    width: 100%;
+    height: calc(100% - 150px);
+    object-fit: contain;
+  }
+}

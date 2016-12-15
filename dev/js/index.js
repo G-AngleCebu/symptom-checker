@@ -13,5 +13,4 @@ require('./userDetails.js');
 	});
 
 	pages.goToPage("#app-title");
-	// pages.goToPage("#doctor-page");
 })();
