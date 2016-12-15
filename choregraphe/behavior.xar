@@ -36,7 +36,7 @@ class MyClass(GeneratedClass):
         GeneratedClass.__init__(self)
 
     def onLoad(self):
-        self.api = infermedica_api.API(app_id='de9f4fd9', app_key='675302b9ab8bd6ba22f8868968f74033')
+        self.api = infermedica_api.API(app_id='94e9b7de', app_key='1242c440f30071a569ae0edcb293c242')
         pass
 
     def onUnload(self):
