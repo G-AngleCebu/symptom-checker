@@ -13,7 +13,7 @@ translations['Headache'] = '頭痛';
 translations['Weakness'] = '体がだるい';
 translations['Shortness Of Breath'] = '息切れ';
 translations['Skin Lesions'] = '皮膚病';
-translations['Do you have any of the following symptoms? (Check all that apply)'] = '次の症状がありますか？ （当てはまるもの全てをご確認ください）';
+translations['Do you have any of the following symptoms? (Check all that apply)'] = 'つぎの症状がありますか？ \\PAU=300\\ 当てはまるもの全てをご確認ください！';
 
 translations['Severe'] = '痛烈な痛み';
 translations['Feels like "stabbing" or "drilling"'] = '刺すような痛み';

@@ -114,6 +114,8 @@ exports.receiveDiagnosisResult = function(data){
 
 	qi.sayWithExplain(questionText);
 
+	questionText = questionText.replace("\\PAU=300\\", "");
+
 	// clear choices list
 	$formArea.html('');
 
