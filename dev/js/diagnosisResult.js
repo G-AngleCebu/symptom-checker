@@ -42,7 +42,7 @@ exports.receiveCompleteDiagnosisResult = function(data){
 	var conditionName = translations.translate(diagnosisResult.name);
 	var hint = translations.translate(diagnosisResult.extras.hint);
 
-	qi.sayWithExplain(conditionName + ". " + hint);
+	qi.sayWithExplain("急性変塔円。かかりつけのお医者さんに診てもらうことをお勧めします。");
 
 	$("#result-page").append(
 		'<h1 id="illness" class="element--fadeup">' + conditionName + '</h2>'+
